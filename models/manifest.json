@@ -1,0 +1,9 @@
+{
+  "checkpoint_sha256": "e30535be63503f489d3e0961afa51cce83bfe7d9766faffbe5dfc2be454310dd",
+  "model_class_ast_sha256": "868e4fb19992112ce2dcf60d67e604480fe44b82f7b6c7341d050974a772d10a",
+  "original_model_source_sha256": "2b48dbe18a32e4a5e9c8c9adb83250e0f399c49343ff5cda6b0155bd855f29cd",
+  "raw_preprocess_sha256": "69c185efb9f060d63463434c3e372e7a2c3a668dc33fbf7a77ccf13f589b01ed",
+  "model_module_sha256": "1523d4957f3c1e80e135bc5875866af5e35607397757eaaad253d9c79f32fa6e",
+  "source_version": 360713817,
+  "deployment": "local CPU; no training or paid services"
+}

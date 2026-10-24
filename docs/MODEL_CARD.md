@@ -1,0 +1,13 @@
+# ConvNeXt-Tiny MIL research model
+
+- Identity: own project-trained ConvNeXt-Tiny, selected epoch 8, torchvision ImageNet initialization; not trained from random initialization.
+- Targets: ACL, MCL, medial/lateral meniscus, medial/lateral/patellofemoral OA, effusion, synovitis, Baker's cyst, contusion, fracture.
+- Training: 3655 fitting studies with public report-derived weak labels; 637 weak-validation studies; 58 expert studies used repeatedly for development.
+- Selection: minimum weak-validation BCE. Epoch 8 BCE 0.537434; weak macro AUC 0.847996. Expert development AUC 0.853143 is not independent clinical validation.
+- Confirmed public competition macro ROC AUC: 0.833. This is not 83.3% accuracy. It is not the public S6 reproduction's 0.950.
+- Image contract: 40 windows of 3 neighbouring slices at 224x224; explicit validity masks; original series metadata required.
+- Outputs: uncalibrated sigmoid model scores. No diagnostic thresholds, medical advice or lesion localization.
+- Labels and reuse: Pilkwang Kim's public RSNA Knee LLM-read report labels, version 1, report_labels_v2.csv. YES/NO soft scores retained, UNK masked. Report extraction was performed by the label publisher; this project consumed the published outputs. See THIRD_PARTY.md. Later JEV-refinement epoch9 is not deployed.
+- Restrictions: research demonstration only. Check competition/MIRA and dependency terms before any public data or model distribution. No raw competition scans are included in this repository.
+- Limits: weak-label noise; small reused expert set; protocol/scanner/domain shift; limited sampled windows; missing series; custom metadata adapter not yet validated for arbitrary clinical DICOM.
+- Deployment parity: one authorized real study replayed on Windows on 24 October 2026. All 159 source DICOM file hashes, processed pixels and validity masks matched the private Kaggle reference and original cached-pixel hash. All 12 scores matched within 5.96e-8 absolute difference (predeclared tolerance 1e-5). Direct inference and the local API gave identical scores. See REAL_STUDY_VERIFICATION.md. This verifies implementation parity for one study; it is not a new accuracy evaluation or clinical validation.

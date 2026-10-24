@@ -1,0 +1,8 @@
+.venv
+.git
+.runtime
+data
+models/*.pt
+*.zip
+__pycache__
+.pytest_cache

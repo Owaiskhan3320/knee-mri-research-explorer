@@ -1,0 +1,10 @@
+[project]
+name = "knee-mri-explorer"
+version = "0.1.0"
+description = "Local knee MRI research explorer using a trained ConvNeXt-Tiny MIL model"
+requires-python = ">=3.12,<3.13"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+markers = ["requires_model: requires an authorized private epoch-8 checkpoint"]

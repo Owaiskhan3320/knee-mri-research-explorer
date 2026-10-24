@@ -1,0 +1,37 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:07.000
+Local CPU research app. This walkthrough uses generated
+DICOMs only.
+
+00:00:07.000 --> 00:00:12.000
+Run local analysis sends the generated study to one
+bounded CPU worker.
+
+00:00:12.000 --> 00:00:19.000
+Completed on CPU with 40 valid windows. Phantom scores
+have no medical meaning.
+
+00:00:19.000 --> 00:00:25.000
+Five input slots group MRI planes and fat-suppression
+settings.
+
+00:00:25.000 --> 00:00:32.000
+Change plane or sampled window to inspect the actual
+model input crops.
+
+00:00:32.000 --> 00:00:40.000
+Twelve study-level scores. They are uncalibrated, not
+diagnostic decisions.
+
+00:00:40.000 --> 00:00:47.000
+Download result JSON to inspect model identity, masks,
+warnings and timing.
+
+00:00:47.000 --> 00:00:54.000
+Project-trained ConvNeXt-Tiny: 0.833 public macro AUC.
+Research use only.
+
+00:00:54.000 --> 00:01:00.000
+Clear study resets the viewer and removes the
+processing job. No cloud inference.
