@@ -31,6 +31,7 @@ The application was verified in a dedicated Windows Python3.12 environment with 
 - A 60-second captioned MP4 was created locally from nine actual generated-data browser captures. Frames are held for readability; there is no narration or real-time latency claim. Real scans are not in the video or public screenshot.
 - Pilkwang Kim's report-label source, pretrained initialization, learning-method references, software dependencies and AI coding assistance are credited in THIRD_PARTY.md.
 - A source/media allowlist audit checks Git's file set for excluded assets, likely credentials and real study identifiers before pushing.
+- Added .gitattributes to preserve LF source bytes on Windows/Linux, because model/preprocessing startup checks use exact file hashes. A real clone from the public GitHub repository reproduced both frozen source hashes, passed 15 tests with 3 explicit model skips (17.17 seconds), and imported/strict-loaded the authorized model locally without modifying source.
 
 Source repository: https://github.com/Owaiskhan3320/knee-mri-research-explorer. No live inference host or paid service is configured. Docker remains untested.
 

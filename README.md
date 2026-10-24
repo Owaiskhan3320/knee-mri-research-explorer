@@ -4,11 +4,18 @@ Local CPU research demo for a project-trained ConvNeXt-Tiny multiple-instance cl
 
 **Project result:** 0.833 public macro ROC AUC; five MRI input slots, 40 three-slice windows, 12 findings. One real-study Windows/Kaggle replay matched every processed pixel and mask, with a maximum score difference below 6e-8. This is deployment consistency evidence, not clinical validation.
 
-![Generated software phantom in the local application](docs/local-demo.png)
+https://github.com/user-attachments/assets/3e6ca849-924f-4360-852c-d34c7b04c6a2
 
 Training used [Pilkwang Kim's public report-derived labels](https://www.kaggle.com/datasets/pilkwang/rsna-knee-llm-labels) and ImageNet initialization. [Full credits and data boundaries](THIRD_PARTY.md). Development used AI coding assistance.
 
 [Watch the 60-second captioned demo](docs/demo.mp4) · [Captions/transcript](docs/demo.vtt). The demo uses actual browser captures of generated DICOMs, held for readability; it has no narration and is not a real-time latency recording.
+
+<details>
+<summary>View the generated-data screenshot</summary>
+
+![Generated software phantom in the local application](docs/local-demo.png)
+
+</details>
 
 No payments, subscriptions, paid APIs, cloud GPU or hosted services are used. No Gradio public share link is created. The full competition dataset is not required.
 
