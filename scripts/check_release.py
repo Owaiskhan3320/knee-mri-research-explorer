@@ -7,7 +7,7 @@ import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-ROOT_FILES = {".gitignore", ".dockerignore", "README.md", "LICENSE", "THIRD_PARTY.md", "Dockerfile",
+ROOT_FILES = {".gitignore", ".gitattributes", ".dockerignore", "README.md", "LICENSE", "THIRD_PARTY.md", "Dockerfile",
               "requirements.txt", "requirements-lock.txt", "pyproject.toml", "run.py", "setup.ps1", "start.ps1"}
 PUBLIC_MEDIA = {"docs/local-demo.png", "docs/demo.mp4"}
 

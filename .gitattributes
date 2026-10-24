@@ -1,0 +1,5 @@
+# Scientific source hashes are byte-based; keep text checkouts identical on Windows/Linux.
+* text=auto eol=lf
+*.png binary
+*.mp4 binary
+*.zip binary
