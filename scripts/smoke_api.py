@@ -1,14 +1,23 @@
 """Exercise the actual local app and isolated model worker with synthetic DICOMs."""
+import argparse
 import json
-import sys
 import time
 from pathlib import Path
+import sys
+from urllib.parse import urlsplit
 import httpx
 import tempfile
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from app.fixtures import create_fixture
 
-base = sys.argv[1] if len(sys.argv) > 1 else "http://127.0.0.1:7860"
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("base", nargs="?", default="http://127.0.0.1:7860")
+parser.add_argument("--uploads-disabled", action="store_true")
+args = parser.parse_args()
+base, uploads_disabled = args.base, args.uploads_disabled
+endpoint = urlsplit(base)
+if endpoint.scheme != "http" or endpoint.hostname not in {"localhost", "127.0.0.1", "::1"} or endpoint.username or endpoint.password:
+    raise SystemExit("Use a loopback HTTP endpoint; this check never sends inputs to third parties.")
 deadline = time.monotonic() + 100
 with httpx.Client(base_url=base, timeout=20, trust_env=False) as client:
     while time.monotonic() < deadline:
@@ -52,6 +61,10 @@ with httpx.Client(base_url=base, timeout=20, trust_env=False) as client:
                       "checkpoint_sha256": result["checkpoint_sha256"], "synthetic_not_accuracy_evaluation": True}, indent=2))
     client.delete(route, headers=headers).raise_for_status()
     assert client.get(route, headers=headers).status_code == 404
+    if uploads_disabled:
+        assert client.post("/api/v1/jobs", data={"kind": "upload"}).status_code == 403
+        print("LOCAL_UPLOAD_DISABLED_POLICY_PASS")
+        raise SystemExit(0)
     with tempfile.TemporaryDirectory(prefix="knee_local_smoke_") as temporary:
         archive, metadata = create_fixture(Path(temporary))
         with archive.open("rb") as z, metadata.open("rb") as f:

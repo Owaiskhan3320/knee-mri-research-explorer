@@ -1,8 +1,9 @@
-.venv
-.git
-.runtime
-data
-models/*.pt
-*.zip
-__pycache__
-.pytest_cache
+# Only application source and dependency manifests may enter the build context.
+**
+!Dockerfile
+!requirements.txt
+!requirements-lock.txt
+!run.py
+!app/
+app/*
+!app/*.py

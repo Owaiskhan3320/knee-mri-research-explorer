@@ -18,7 +18,7 @@ The application was verified in a dedicated Windows Python3.12 environment with 
 
 - Synthetic fixtures are mathematical phantoms, not patient scans, and do not establish accuracy or clinical utility.
 - Original real-study Kaggle raw/cache parity records are retained in ignored model assets. Windows replay now covers one real study; a broader scanner/codec/performance benchmark remains outstanding.
-- The Dockerfile is supplied; Docker build/run has not been tested because Docker Desktop's engine was stopped. The local Python app does not require Docker.
+- Docker build and runtime checks passed on 25 October; see the container checks below. The local Python app also works without Docker.
 - No public inference hosting, payment, subscription, paid API or cloud inference is configured or used. Source publication is documented in the 25 October release checks below.
 - No real competition scans are bundled for public display. Arbitrary clinical-series metadata inference is outside this first version.
 
@@ -33,6 +33,15 @@ The application was verified in a dedicated Windows Python3.12 environment with 
 - A source/media allowlist audit checks Git's file set for excluded assets, likely credentials and real study identifiers before pushing.
 - Added .gitattributes to preserve LF source bytes on Windows/Linux, because model/preprocessing startup checks use exact file hashes. A real clone from the public GitHub repository reproduced both frozen source hashes, passed 15 tests with 3 explicit model skips (17.17 seconds), and imported/strict-loaded the authorized model locally without modifying source.
 
-Source repository: https://github.com/Owaiskhan3320/knee-mri-research-explorer. No live inference host or paid service is configured. Docker remains untested.
+Source repository: https://github.com/Owaiskhan3320/knee-mri-research-explorer. No live inference host or paid service is configured.
+
+## Local container checks — 25 October 2026
+
+- Recovered Docker Desktop startup by preserving and recreating two stale transient socket directories. No factory reset, image/volume removal or WSL distribution reset was used.
+- Built a Linux/amd64 Python 3.12 CPU image on the local Docker Desktop engine. Build-time `pip check`, exact CPU torch/torchvision version checks and JPEG Lossless/JPEG 2000 decoder availability passed.
+- Restricted the Docker context to application Python source and dependency manifests. No weights, real scans, runtime files or credentials are baked into the image. All application source hashes match the host checkout.
+- Three runtime phases passed: missing weights (readiness 503 and inference request rejected), networking-disabled actual-model inference, and loopback-only host access. Positive phases used a non-root user, a read-only root filesystem/model mount, two CPUs and a 2 GiB memory limit. Token-protected access, cleanup, health checks and disabled-upload policy passed.
+- The input was a generated DICOM phantom. These checks establish container mechanics, not Linux real-study parity or medical accuracy. Recorded memory values are post-request snapshots, not peak-memory measurements.
+- No GPU, remote builder, image push or paid service was used. Temporary test containers were removed; the local image and private model files were retained. See [CONTAINER_VERIFICATION.md](CONTAINER_VERIFICATION.md) and its machine-readable report.
 
 Open http://127.0.0.1:7860/ while the server is running. Restart with start.ps1 or `.venv\Scripts\python.exe run.py` from the project folder. Only loopback is bound by default.

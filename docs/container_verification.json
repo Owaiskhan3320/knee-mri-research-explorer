@@ -1,0 +1,47 @@
+{
+  "status": "LOCAL_DOCKER_VERIFICATION_PASS",
+  "image_id": "sha256:44e7af896927c6e231f52176fff3606414219347573c7e71c56601b55c620267",
+  "image_size_bytes": 395813172,
+  "platform": "linux/amd64",
+  "image_content": {
+    "application_source_files_verified": 11,
+    "private_weights_baked_in": false,
+    "runtime_files_baked_in": false
+  },
+  "elapsed_seconds": 42.719,
+  "phases": {
+    "missing": {
+      "missing_weights_readiness_status": 503,
+      "inference_request_rejected_status": 429,
+      "uid": 1000
+    },
+    "offline": {
+      "healthy": true,
+      "read_only_root": true,
+      "read_only_weights": true,
+      "model_inference_and_access_checks_passed": true,
+      "upload_policy_403": true,
+      "oom_killed": false,
+      "memory_snapshot": "595.9MiB / 2GiB",
+      "network_mode": "none",
+      "cpu_limit": 2,
+      "memory_limit_GiB": 2
+    },
+    "localhost": {
+      "healthy": true,
+      "read_only_root": true,
+      "read_only_weights": true,
+      "model_inference_and_access_checks_passed": true,
+      "upload_policy_403": true,
+      "oom_killed": false,
+      "memory_snapshot": "586.1MiB / 2GiB",
+      "network_mode": "bridge",
+      "cpu_limit": 2,
+      "memory_limit_GiB": 2
+    }
+  },
+  "gpu_used": false,
+  "paid_services_used": false,
+  "temporary_containers_removed": true,
+  "limitation": "Generated DICOM engineering checks only; memory values are post-request snapshots, not peak benchmarks."
+}

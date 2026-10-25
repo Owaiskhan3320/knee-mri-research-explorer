@@ -90,16 +90,24 @@ To repeat with your own authorized private export, without downloading anything 
 
 The app must already be running. The data folder is optional and excluded from Git and Docker. See [the portfolio/demo checklist](docs/PORTFOLIO.md) before publishing.
 
-## Docker (optional, free local use)
+## Docker (optional, local CPU)
 
-After Docker Desktop's engine is running:
+Built and tested on Windows/WSL2 with a Linux image on 25 October 2026. Import the authorized weights first and start Docker Desktop's Linux engine. From the project folder:
 
 ```powershell
-docker build -t knee-mri-explorer .
-docker run --rm -p 127.0.0.1:7860:7860 --mount "type=bind,source=$PWD\models,target=/opt/knee/models,readonly" knee-mri-explorer
+docker --context desktop-linux build --builder desktop-linux -t knee-mri-explorer:local .
+docker --context desktop-linux run --rm --init --name knee-mri-explorer --read-only --cpus 2 --memory 2g --pids-limit 256 --cap-drop ALL --security-opt no-new-privileges --tmpfs /tmp:rw,nosuid,noexec,size=128m --tmpfs /opt/knee/.runtime:rw,nosuid,noexec,size=512m,uid=1000,gid=1000 -p 127.0.0.1:7861:7860 --mount "type=bind,source=$PWD\models,target=/opt/knee/models,readonly" knee-mri-explorer:local
 ```
 
-Container uploads default off. CPU/memory performance must be benchmarked before any public host is selected. Paid hosting is outside this project's authorized scope.
+Open http://127.0.0.1:7861/ and choose **Generated software test**. The process runs as a non-root user, mounts private weights read-only and keeps temporary files in memory-backed directories. Uploads default off. Stop it with Ctrl+C; the image and your model files remain local.
+
+The automated check runs missing-model, networking-disabled inference and localhost-access phases, then removes its temporary containers:
+
+```powershell
+& '.\.venv\Scripts\python.exe' 'scripts\verify_container.py'
+```
+
+See [the container verification record](docs/CONTAINER_VERIFICATION.md) for results and limits. Broader real-study and peak-memory benchmarks remain outstanding. No image is pushed and no paid hosting is used.
 
 See `docs/ARCHITECTURE.md`, `docs/MODEL_CARD.md` and `models/README.md` for contracts and attribution.
 

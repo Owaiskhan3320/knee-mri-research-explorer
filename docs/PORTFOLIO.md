@@ -8,6 +8,7 @@ Source repository: https://github.com/Owaiskhan3320/knee-mri-research-explorer. 
 - DICOM ordering, physical crop/resize, explicit missing-window masks and frozen preprocessing provenance.
 - A CPU inference worker shared by FastAPI and a Gradio viewer, bounded queue, timeout/restart, access tokens and temporary-file cleanup.
 - An honest model card, 18 passing engineering tests and exact real-study Windows/Kaggle input parity with near-identical scores.
+- A locally verified Linux CPU container: non-root, read-only model/root filesystem, missing-model rejection and inference with networking disabled.
 
 The model deployed here scored 0.833 public macro ROC AUC. The separate 0.950 public-model reproduction is not this model and should not be presented as independently trained work. One-study parity is not evidence of clinical accuracy.
 
@@ -16,7 +17,7 @@ The model deployed here scored 0.833 public macro ROC AUC. The separate 0.950 pu
 1. Inspect `git status` and the exact staged file list. Keep `.venv/`, `.runtime/`, `data/`, weights and credentials excluded.
 2. Use only generated-phantom screenshots/video. A real MRI screenshot is also dataset content and is kept private.
 3. Review the original report-label source attribution and relevant competition/MIRA and pretrained-weight terms before distributing any data or weights. The app does not download weights automatically.
-4. Keep Docker explicitly marked untested until it has been built and run locally. The existing Python installation is the verified launch path.
+4. Repeat `scripts/verify_container.py` after changing the container or application. The [25 October container record](CONTAINER_VERIFICATION.md) covers generated inputs; broader real-study Linux parity and peak-memory checks remain separate work.
 5. Publish code/documentation only after that review. A public cloud inference service is a separate release decision; no paid service is required for a local demo.
 
 ## Suggested 60–90 second recording
