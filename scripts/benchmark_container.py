@@ -67,7 +67,9 @@ with tempfile.TemporaryDirectory(dir=settings.root/'.runtime') as temporary:
 print('BENCHMARK_JSON:'+json.dumps({'source_files':count,'valid_windows':int(valid.sum()),
     'target_count':12,'source_file_hashes_exact':True,'pixels_exact':True,'mask_exact':True,
     'original_cached_pixel_hash_exact':True,'absolute_score_tolerance':tolerance,
-    'direct_max_score_difference':maximum,'cpu_threads':torch.get_num_threads()}))
+    'direct_max_score_difference':maximum,'cpu_threads':torch.get_num_threads(),
+    'valid_windows_per_slot':valid.reshape(5,8).sum(axis=1).tolist(),
+    'input_profile':reference.get('input_profile')}))
 '''
 
 
@@ -169,7 +171,8 @@ with httpx.Client(base_url='http://127.0.0.1:7860',timeout=30,trust_env=False) a
         'memory_current_before_requests_bytes':baseline,'memory_peak_bytes':peak,
         'memory_current_after_requests_bytes':int((cgroup/'memory.current').read_text()),
         'memory_events':memory_events,'memory_swap_peak_bytes':int((cgroup/'memory.swap.peak').read_text()) if (cgroup/'memory.swap.peak').exists() else None,
-        'all_32_previews_and_access_checks_passed':True,'all_api_jobs_cleared':True,
+        'all_valid_previews_and_access_checks_passed':True,
+        'preview_count_checked':len(reference['valid_windows']),'all_api_jobs_cleared':True,
         'environment':{n:importlib.metadata.version(n) for n in ['torch','torchvision','numpy','Pillow','pydicom']}}
 print('BENCHMARK_JSON:'+json.dumps(report))
 '''

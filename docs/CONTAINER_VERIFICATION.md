@@ -34,4 +34,4 @@ The script refuses remote TCP Docker contexts, checks that the existing image ma
 
 ## Remaining limits
 
-One generated study was used in each positive phase above. A separate [real-study Linux replay and performance check](LINUX_REAL_STUDY_BENCHMARK.md) subsequently passed on the same single study used for Windows parity. It includes four API requests and cgroup peak-memory measurement; broader study/protocol/codec coverage remains outstanding. No public inference host is configured.
+One generated study was used in each positive phase above. Subsequent real-study checks now cover [three Windows/Linux replays and eight Linux API requests](MULTI_STUDY_VERIFICATION.md), including cgroup peak-memory measurement. The [initial one-case record](LINUX_REAL_STUDY_BENCHMARK.md) is retained. Wider scanner/protocol and real compressed-study coverage remain outstanding. No public inference host is configured.

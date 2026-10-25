@@ -1,0 +1,300 @@
+{
+  "status": "THREE_STUDY_WINDOWS_LINUX_PARITY_PASS",
+  "verified_date": "2026-10-25",
+  "unique_studies": 3,
+  "total_provided_dicom_files": 464,
+  "targets_per_study": 12,
+  "absolute_score_tolerance": 1e-05,
+  "maximum_score_difference_from_kaggle": 1.1920928955078125e-07,
+  "source_files_pixels_and_masks_exact_on_both_platforms": true,
+  "linux_image_id": "sha256:44e7af896927c6e231f52176fff3606414219347573c7e71c56601b55c620267",
+  "linux_cpu_quota": 2,
+  "linux_memory_limit_bytes": 2147483648,
+  "linux_container_swap_disabled": true,
+  "linux_network_mode": "none",
+  "maximum_linux_container_peak_bytes": 1208995840,
+  "linux_api_requests": 8,
+  "windows_api_requests": 3,
+  "all_api_jobs_and_temporary_containers_cleared": true,
+  "host_cpu": "12th Gen Intel Core i5-1235U",
+  "host_physical_cores": 10,
+  "host_logical_processors": 12,
+  "host_physical_memory_bytes": 16858853376,
+  "docker_vm_memory_bytes": 8167452672,
+  "transfer_syntax_names": {
+    "1.2.840.10008.1.2.1": "Explicit VR Little Endian"
+  },
+  "matrix_shapes": [
+    "1024x1024",
+    "512x512",
+    "640x640",
+    "672x672"
+  ],
+  "environment": {
+    "torch": "2.11.0+cpu",
+    "torchvision": "0.26.0+cpu",
+    "numpy": "2.1.3",
+    "Pillow": "12.3.0",
+    "pydicom": "3.0.2"
+  },
+  "cases": [
+    {
+      "case": "case_01",
+      "source_files": 159,
+      "provided_series_count": 5,
+      "selected_series_only": false,
+      "matrix_shape_counts": {
+        "672x672": 26,
+        "512x512": 107,
+        "640x640": 26
+      },
+      "transfer_syntax_counts": {
+        "1.2.840.10008.1.2.1": 159
+      },
+      "total_pixels": 50440192,
+      "archive_bytes": 78474044,
+      "expanded_bytes": 101052708,
+      "valid_windows_per_slot": [
+        8,
+        8,
+        8,
+        8,
+        0
+      ],
+      "valid_windows": 32,
+      "source_file_hashes_exact": true,
+      "windows_pixels_and_mask_exact": true,
+      "linux_pixels_and_mask_exact": true,
+      "original_kaggle_cached_pixel_hash_exact": true,
+      "windows_direct_max_score_difference": 5.960464477539063e-08,
+      "windows_api_max_score_difference": 5.960464477539063e-08,
+      "linux_direct_max_score_difference": 1.1920928955078125e-07,
+      "linux_api_max_score_difference": 1.1920928955078125e-07,
+      "linux_repeat_predictions_identical": true,
+      "windows_api_worker_seconds": {
+        "preprocessing": 1.078,
+        "inference": 2.703,
+        "total": 9.078
+      },
+      "linux_api_requests": [
+        {
+          "request": 1,
+          "phase": "first_request",
+          "worker_seconds": {
+            "preprocessing": 0.779,
+            "inference": 4.781,
+            "total": 6.951
+          },
+          "upload_to_result_seconds": 8.681,
+          "max_score_difference_from_kaggle": 1.1920928955078125e-07,
+          "max_score_difference_from_first": 0.0
+        },
+        {
+          "request": 2,
+          "phase": "subsequent_request",
+          "worker_seconds": {
+            "preprocessing": 0.616,
+            "inference": 4.062,
+            "total": 6.09
+          },
+          "upload_to_result_seconds": 7.49,
+          "max_score_difference_from_kaggle": 1.1920928955078125e-07,
+          "max_score_difference_from_first": 0.0
+        },
+        {
+          "request": 3,
+          "phase": "subsequent_request",
+          "worker_seconds": {
+            "preprocessing": 0.642,
+            "inference": 4.237,
+            "total": 6.253
+          },
+          "upload_to_result_seconds": 8.066,
+          "max_score_difference_from_kaggle": 1.1920928955078125e-07,
+          "max_score_difference_from_first": 0.0
+        },
+        {
+          "request": 4,
+          "phase": "subsequent_request",
+          "worker_seconds": {
+            "preprocessing": 0.617,
+            "inference": 4.143,
+            "total": 6.127
+          },
+          "upload_to_result_seconds": 8.106,
+          "max_score_difference_from_kaggle": 1.1920928955078125e-07,
+          "max_score_difference_from_first": 0.0
+        }
+      ],
+      "linux_container_peak_bytes": 1022607360,
+      "linux_memory_events": {
+        "low": 0,
+        "high": 0,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "all_valid_previews_checked": true,
+      "all_api_jobs_cleared": true
+    },
+    {
+      "case": "case_02",
+      "source_files": 203,
+      "provided_series_count": 5,
+      "selected_series_only": true,
+      "matrix_shape_counts": {
+        "512x512": 118,
+        "1024x1024": 85
+      },
+      "transfer_syntax_counts": {
+        "1.2.840.10008.1.2.1": 203
+      },
+      "total_pixels": 120061952,
+      "archive_bytes": 112655391,
+      "expanded_bytes": 240427926,
+      "valid_windows_per_slot": [
+        8,
+        8,
+        8,
+        8,
+        8
+      ],
+      "valid_windows": 40,
+      "source_file_hashes_exact": true,
+      "windows_pixels_and_mask_exact": true,
+      "linux_pixels_and_mask_exact": true,
+      "original_kaggle_cached_pixel_hash_exact": true,
+      "windows_direct_max_score_difference": 5.960464477539063e-08,
+      "windows_api_max_score_difference": 5.960464477539063e-08,
+      "linux_direct_max_score_difference": 4.470348358154297e-08,
+      "linux_api_max_score_difference": 4.470348358154297e-08,
+      "linux_repeat_predictions_identical": true,
+      "windows_api_worker_seconds": {
+        "preprocessing": 7.719,
+        "inference": 16.14,
+        "total": 33.672
+      },
+      "linux_api_requests": [
+        {
+          "request": 1,
+          "phase": "first_request",
+          "worker_seconds": {
+            "preprocessing": 2.155,
+            "inference": 5.752,
+            "total": 10.14
+          },
+          "upload_to_result_seconds": 12.824,
+          "max_score_difference_from_kaggle": 4.470348358154297e-08,
+          "max_score_difference_from_first": 0.0
+        },
+        {
+          "request": 2,
+          "phase": "subsequent_request",
+          "worker_seconds": {
+            "preprocessing": 1.702,
+            "inference": 5.242,
+            "total": 9.244
+          },
+          "upload_to_result_seconds": 11.633,
+          "max_score_difference_from_kaggle": 4.470348358154297e-08,
+          "max_score_difference_from_first": 0.0
+        }
+      ],
+      "linux_container_peak_bytes": 1208995840,
+      "linux_memory_events": {
+        "low": 0,
+        "high": 0,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "all_valid_previews_checked": true,
+      "all_api_jobs_cleared": true
+    },
+    {
+      "case": "case_03",
+      "source_files": 102,
+      "provided_series_count": 4,
+      "selected_series_only": true,
+      "matrix_shape_counts": {
+        "672x672": 24,
+        "512x512": 78
+      },
+      "transfer_syntax_counts": {
+        "1.2.840.10008.1.2.1": 102
+      },
+      "total_pixels": 31285248,
+      "archive_bytes": 48685696,
+      "expanded_bytes": 62680772,
+      "valid_windows_per_slot": [
+        8,
+        8,
+        8,
+        8,
+        0
+      ],
+      "valid_windows": 32,
+      "source_file_hashes_exact": true,
+      "windows_pixels_and_mask_exact": true,
+      "linux_pixels_and_mask_exact": true,
+      "original_kaggle_cached_pixel_hash_exact": true,
+      "windows_direct_max_score_difference": 7.450580596923828e-08,
+      "windows_api_max_score_difference": 7.450580596923828e-08,
+      "linux_direct_max_score_difference": 1.1920928955078125e-07,
+      "linux_api_max_score_difference": 1.1920928955078125e-07,
+      "linux_repeat_predictions_identical": true,
+      "windows_api_worker_seconds": {
+        "preprocessing": 2.625,
+        "inference": 13.188,
+        "total": 20.188
+      },
+      "linux_api_requests": [
+        {
+          "request": 1,
+          "phase": "first_request",
+          "worker_seconds": {
+            "preprocessing": 0.5,
+            "inference": 3.898,
+            "total": 5.103
+          },
+          "upload_to_result_seconds": 6.456,
+          "max_score_difference_from_kaggle": 1.1920928955078125e-07,
+          "max_score_difference_from_first": 0.0
+        },
+        {
+          "request": 2,
+          "phase": "subsequent_request",
+          "worker_seconds": {
+            "preprocessing": 0.439,
+            "inference": 2.769,
+            "total": 3.871
+          },
+          "upload_to_result_seconds": 5.078,
+          "max_score_difference_from_kaggle": 1.1920928955078125e-07,
+          "max_score_difference_from_first": 0.0
+        }
+      ],
+      "linux_container_peak_bytes": 876744704,
+      "linux_memory_events": {
+        "low": 0,
+        "high": 0,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "all_valid_previews_checked": true,
+      "all_api_jobs_cleared": true
+    }
+  ],
+  "gpu_used": false,
+  "paid_services_used": false,
+  "public_accuracy_evaluation_performed": false,
+  "deployed_model_public_macro_auc": 0.833,
+  "scope": "Three fixed weak-validation studies; cases 02/03 contain only originally selected series, reproducing identical original cached inputs. Parity checks, not medical accuracy or generalization.",
+  "memory_scope": "cgroup v2 lifetime peak of API container: server, worker, HTTP probe, filesystem cache and tmpfs; excludes separate direct parity container, Docker VM, host and browser",
+  "timing_scope": "Worker processing excludes upload, queue wait and model startup; upload-to-result includes local multipart transfer and polling; readiness wait begins when the probe starts",
+  "limitations": "Shared local machine, small selected sample, one transfer syntax, varying background load and non-simultaneous measurements. No controlled OS performance comparison, tail-latency estimate, concurrent-load capacity or minimum host specification."
+}

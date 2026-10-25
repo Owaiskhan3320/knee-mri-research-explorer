@@ -17,7 +17,7 @@ The application was verified in a dedicated Windows Python3.12 environment with 
 ## Limits
 
 - Synthetic fixtures are mathematical phantoms, not patient scans, and do not establish accuracy or clinical utility.
-- Original real-study Kaggle raw/cache parity records are retained in ignored model assets. Windows replay now covers one real study; a broader scanner/codec/performance benchmark remains outstanding.
+- Original real-study Kaggle raw/cache parity records are retained in ignored model assets. Local Windows/Linux replay now covers three studies; wider scanner/protocol and real compressed-study coverage remain outstanding.
 - Docker build and runtime checks passed on 25 October; see the container checks below. The local Python app also works without Docker.
 - No public inference hosting, payment, subscription, paid API or cloud inference is configured or used. Source publication is documented in the 25 October release checks below.
 - No real competition scans are bundled for public display. Arbitrary clinical-series metadata inference is outside this first version.
@@ -52,4 +52,13 @@ Open http://127.0.0.1:7860/ while the server is running. Restart with start.ps1 
 - Four API requests on that same study gave identical scores. First worker processing took 6.951 seconds; three subsequent requests had a 6.127-second median (6.090–6.253 seconds). This excludes upload, queue wait and model startup. Local multipart upload-to-result observations were 7.490–8.681 seconds.
 - Measured the API container's lifetime cgroup-v2 memory peak: 1,022,607,360 bytes (975.234 MiB), including server, worker, HTTP probe and attributed cache/tmpfs. This excludes the separate direct verifier, Docker VM, browser and host. The container used a two-CPU quota, 2 GiB memory limit and no swap; no OOM or memory-max events occurred.
 - Verified all 32 preview endpoints, token protection and deletion after each request. Both temporary containers were removed. Weights and the private input folder were mounted read-only; the model/application were unchanged. No GPU, payment, data download or public upload was used.
-- Only one unique study has been checked on Windows/Linux; repeated requests do not increase study coverage. See [LINUX_REAL_STUDY_BENCHMARK.md](LINUX_REAL_STUDY_BENCHMARK.md). Broader real-study coverage and hosting decisions remain open.
+- This initial check covered one unique study; repeated requests did not increase study coverage. See [LINUX_REAL_STUDY_BENCHMARK.md](LINUX_REAL_STUDY_BENCHMARK.md) and the subsequent extension below.
+
+## Three-study extension and portfolio record — 25 October 2026
+
+- A private copy of the saved Kaggle export reran the unchanged three-case raw/cache gate and exported the other two cases. It completed successfully in 166.2 seconds on CPU, with internet off. Only originally selected input series were exported; their pixels/masks still matched the original cache exactly. No GPU, training or competition submission was started.
+- Imported two private exports into ignored `data/additional_replays/`. Both passed direct and actual-API verification on Windows and in network-isolated Linux containers. All three cases now cover 464 provided DICOM files, 32/40/32 valid windows and 512/640/672/1024-square matrices. Maximum score difference from Kaggle across both platforms: 1.1920928955078125e-7, below the unchanged 1e-5 tolerance.
+- Eight total Linux API requests produced identical repeated score vectors within each case. Worker processing observations ranged from 3.871 to 10.140 seconds; maximum API-container cgroup peak was 1,208,995,840 bytes (1152.988 MiB), under the existing two-CPU/2-GiB configuration. No OOM or memory-max events occurred. Detailed timings and measurement scope are in [MULTI_STUDY_VERIFICATION.md](MULTI_STUDY_VERIFICATION.md).
+- The 203-slice case included all five slots and 120,061,952 source pixels, exercising the existing 128-million-pixel admission limit. No upload/pixel limits were raised. The other new case retained the missing-coronal-non-FS mask.
+- All three studies use Explicit VR Little Endian. Decoder availability is tested separately; no broader real compressed-DICOM coverage is claimed.
+- Cleared API jobs, stopped the temporary Windows server and removed all temporary replay containers. Private data, references and screenshots remain excluded from Git. Added current portfolio/resume wording with label/pretraining attribution and a separate identity for the 0.950 public-model reproduction.

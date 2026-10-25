@@ -2,7 +2,7 @@
 
 Local CPU research demo for a project-trained ConvNeXt-Tiny multiple-instance classifier. **Not for diagnosis or patient care.**
 
-**Project result:** 0.833 public macro ROC AUC; five MRI input slots, 40 three-slice windows, 12 findings. One real-study Windows/Kaggle replay matched every processed pixel and mask, with a maximum score difference below 6e-8. This is deployment consistency evidence, not clinical validation.
+**Project result:** 0.833 public macro ROC AUC; five MRI input slots, 40 three-slice windows, 12 findings. Three real-study replays matched every processed pixel and mask on Windows and Linux, with all scores within 1.20e-7 of Kaggle. This is deployment consistency evidence, not clinical validation.
 
 https://github.com/user-attachments/assets/3e6ca849-924f-4360-852c-d34c7b04c6a2
 
@@ -80,9 +80,9 @@ This command fails if private weights are missing or invalid; it does not substi
 
 Verified on a fresh Windows Python 3.12 environment on 25 October 2026: **15 passed, 3 skipped** without weights, then **18 passed** after verified model import. `pip check` passed. The complete checks include actual model masking/request independence and worker timeout/recovery.
 
-Real-study Windows replay passed on one privately held competition study: all processed pixels and masks matched Kaggle exactly; the maximum difference across 12 scores was 5.96e-8. This checks deployment consistency, not clinical accuracy. See [the verification record](docs/REAL_STUDY_VERIFICATION.md).
+Three authorized real studies passed Windows and Linux replay: 464 provided DICOM files, complete and missing input sequences, and 512/640/672/1024-square image matrices. Source hashes, processed pixels and masks matched exactly; all 12 scores per study were within 1.20e-7 of Kaggle under the unchanged 1e-5 tolerance. Eight Linux API requests gave identical repeated predictions within each study. See [the expanded verification record](docs/MULTI_STUDY_VERIFICATION.md).
 
-The same study also passed Linux container replay: exact input pixels/mask and all 12 scores within 1.20e-7 of Kaggle. Four API requests produced identical scores. Subsequent worker processing had a 6.127-second median; API-container cgroup peak memory was approximately 975 MiB under a two-CPU, 2 GiB limit. These are one-study observations on a shared local machine, not hosting requirements or a general latency guarantee. See [the Linux parity and performance record](docs/LINUX_REAL_STUDY_BENCHMARK.md).
+Observed Linux worker processing ranged from 3.871 to 10.140 seconds, with a largest API-container cgroup memory peak of 1.13 GiB under a two-CPU, 2 GiB limit. These are small-sample observations on a shared local machine. The [original Windows case](docs/REAL_STUDY_VERIFICATION.md) and [initial Linux benchmark](docs/LINUX_REAL_STUDY_BENCHMARK.md) remain available as historical records. [Portfolio and resume wording](docs/PORTFOLIO.md) describe the supported claims and attribution.
 
 To repeat with your own authorized private export, without downloading anything or using a GPU:
 
@@ -109,7 +109,7 @@ The automated check runs missing-model, networking-disabled inference and localh
 & '.\.venv\Scripts\python.exe' 'scripts\verify_container.py'
 ```
 
-See [the container verification record](docs/CONTAINER_VERIFICATION.md) for results and limits. An initial [one-study latency and peak-memory check](docs/LINUX_REAL_STUDY_BENCHMARK.md) also passed; broader study/protocol/codec coverage remains outstanding. No image is pushed and no paid hosting is used.
+See [the container checks](docs/CONTAINER_VERIFICATION.md) and [three-study replay/performance record](docs/MULTI_STUDY_VERIFICATION.md) for results and limits. Wider scanner/protocol coverage and real compressed-DICOM cases remain unverified. No image is pushed and no paid hosting is used.
 
 See `docs/ARCHITECTURE.md`, `docs/MODEL_CARD.md` and `models/README.md` for contracts and attribution.
 

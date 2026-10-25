@@ -44,4 +44,8 @@ Do not publish `study.zip`, DICOMs, reference input arrays, real-study screensho
 
 The same privately held study passed Linux container replay with exact source-file hashes, processed pixels and validity mask. The maximum score difference from Kaggle was 1.1920928955078125e-7, within the original 1e-5 tolerance. Four API requests produced identical scores and cleared their job files. Subsequent worker processing had a 6.127-second median; peak API-container cgroup memory was about 975 MiB. See [the separate record](LINUX_REAL_STUDY_BENCHMARK.md) for measurement scope and exact results. This is the same unique study, not additional independent cases.
 
-This one case does not establish scanner/site generalization, diagnostic reliability, calibration, clinical utility or broad codec coverage. The public competition macro ROC AUC remains **0.833**, not a newly measured score.
+## Two additional cases — 25 October 2026
+
+The expanded check now covers three unique studies on both Windows and Linux, including all five input slots and different missing-sequence/image-matrix conditions. All provided source hashes, processed pixels and masks matched; the maximum score difference was 1.1920928955078125e-7 under the unchanged tolerance. See [MULTI_STUDY_VERIFICATION.md](MULTI_STUDY_VERIFICATION.md) for the selected-series scope, exact counts and performance observations. The one-study tables above remain the original baseline record.
+
+These three fixed cases do not establish scanner/site generalization, diagnostic reliability, calibration, clinical utility or broad codec coverage. The public competition macro ROC AUC remains **0.833**, not a newly measured score.
