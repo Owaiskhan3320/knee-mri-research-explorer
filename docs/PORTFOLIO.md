@@ -17,7 +17,7 @@ The model deployed here scored 0.833 public macro ROC AUC. The separate 0.950 pu
 1. Inspect `git status` and the exact staged file list. Keep `.venv/`, `.runtime/`, `data/`, weights and credentials excluded.
 2. Use only generated-phantom screenshots/video. A real MRI screenshot is also dataset content and is kept private.
 3. Review the original report-label source attribution and relevant competition/MIRA and pretrained-weight terms before distributing any data or weights. The app does not download weights automatically.
-4. Repeat `scripts/verify_container.py` after changing the container or application. The [25 October container record](CONTAINER_VERIFICATION.md) covers generated inputs; broader real-study Linux parity and peak-memory checks remain separate work.
+4. Repeat `scripts/verify_container.py` after changing the container or application. The [container record](CONTAINER_VERIFICATION.md) covers generated inputs; a separate [Linux replay/benchmark](LINUX_REAL_STUDY_BENCHMARK.md) covers one private real study, four requests and cgroup peak memory. Broader study coverage remains open.
 5. Publish code/documentation only after that review. A public cloud inference service is a separate release decision; no paid service is required for a local demo.
 
 ## Suggested 60–90 second recording

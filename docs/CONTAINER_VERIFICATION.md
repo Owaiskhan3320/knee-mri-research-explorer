@@ -34,4 +34,4 @@ The script refuses remote TCP Docker contexts, checks that the existing image ma
 
 ## Remaining limits
 
-One generated study was used in each positive phase. The current real-study Windows/Kaggle replay remains a separate one-study result; Linux real-study parity, a larger protocol/codec sample, repeated latency measurements and peak aggregate memory are not established by this record. No public inference host is configured.
+One generated study was used in each positive phase above. A separate [real-study Linux replay and performance check](LINUX_REAL_STUDY_BENCHMARK.md) subsequently passed on the same single study used for Windows parity. It includes four API requests and cgroup peak-memory measurement; broader study/protocol/codec coverage remains outstanding. No public inference host is configured.

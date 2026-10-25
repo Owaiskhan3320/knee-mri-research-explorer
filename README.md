@@ -82,6 +82,8 @@ Verified on a fresh Windows Python 3.12 environment on 25 October 2026: **15 pas
 
 Real-study Windows replay passed on one privately held competition study: all processed pixels and masks matched Kaggle exactly; the maximum difference across 12 scores was 5.96e-8. This checks deployment consistency, not clinical accuracy. See [the verification record](docs/REAL_STUDY_VERIFICATION.md).
 
+The same study also passed Linux container replay: exact input pixels/mask and all 12 scores within 1.20e-7 of Kaggle. Four API requests produced identical scores. Subsequent worker processing had a 6.127-second median; API-container cgroup peak memory was approximately 975 MiB under a two-CPU, 2 GiB limit. These are one-study observations on a shared local machine, not hosting requirements or a general latency guarantee. See [the Linux parity and performance record](docs/LINUX_REAL_STUDY_BENCHMARK.md).
+
 To repeat with your own authorized private export, without downloading anything or using a GPU:
 
 ```powershell
@@ -107,7 +109,7 @@ The automated check runs missing-model, networking-disabled inference and localh
 & '.\.venv\Scripts\python.exe' 'scripts\verify_container.py'
 ```
 
-See [the container verification record](docs/CONTAINER_VERIFICATION.md) for results and limits. Broader real-study and peak-memory benchmarks remain outstanding. No image is pushed and no paid hosting is used.
+See [the container verification record](docs/CONTAINER_VERIFICATION.md) for results and limits. An initial [one-study latency and peak-memory check](docs/LINUX_REAL_STUDY_BENCHMARK.md) also passed; broader study/protocol/codec coverage remains outstanding. No image is pushed and no paid hosting is used.
 
 See `docs/ARCHITECTURE.md`, `docs/MODEL_CARD.md` and `models/README.md` for contracts and attribution.
 

@@ -45,3 +45,11 @@ Source repository: https://github.com/Owaiskhan3320/knee-mri-research-explorer. 
 - No GPU, remote builder, image push or paid service was used. Temporary test containers were removed; the local image and private model files were retained. See [CONTAINER_VERIFICATION.md](CONTAINER_VERIFICATION.md) and its machine-readable report.
 
 Open http://127.0.0.1:7860/ while the server is running. Restart with start.ps1 or `.venv\Scripts\python.exe run.py` from the project folder. Only loopback is bound by default.
+
+## Linux real-study replay and initial benchmark — 25 October 2026
+
+- Replayed the existing authorized private study in the Linux image, with no container networking. All 159 DICOM hashes, input pixels and the 32/40 validity mask matched the original Kaggle reference/cache. All 12 direct/API scores were within 1.20e-7 of Kaggle, below the unchanged 1e-5 tolerance.
+- Four API requests on that same study gave identical scores. First worker processing took 6.951 seconds; three subsequent requests had a 6.127-second median (6.090–6.253 seconds). This excludes upload, queue wait and model startup. Local multipart upload-to-result observations were 7.490–8.681 seconds.
+- Measured the API container's lifetime cgroup-v2 memory peak: 1,022,607,360 bytes (975.234 MiB), including server, worker, HTTP probe and attributed cache/tmpfs. This excludes the separate direct verifier, Docker VM, browser and host. The container used a two-CPU quota, 2 GiB memory limit and no swap; no OOM or memory-max events occurred.
+- Verified all 32 preview endpoints, token protection and deletion after each request. Both temporary containers were removed. Weights and the private input folder were mounted read-only; the model/application were unchanged. No GPU, payment, data download or public upload was used.
+- Only one unique study has been checked on Windows/Linux; repeated requests do not increase study coverage. See [LINUX_REAL_STUDY_BENCHMARK.md](LINUX_REAL_STUDY_BENCHMARK.md). Broader real-study coverage and hosting decisions remain open.
