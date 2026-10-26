@@ -8,6 +8,8 @@ https://github.com/user-attachments/assets/3e6ca849-924f-4360-852c-d34c7b04c6a2
 
 Training used [Pilkwang Kim's public report-derived labels](https://www.kaggle.com/datasets/pilkwang/rsna-knee-llm-labels) and ImageNet initialization. [Full credits and data boundaries](THIRD_PARTY.md). Development used AI coding assistance.
 
+The [original training source and checkpoint configuration](training/README.md) are archived with source hashes, split/selection details and links to the saved Kaggle versions. Imported on 26 October 2026; this was not a new training run. The published notebook has training disabled.
+
 [Watch the 60-second captioned demo](docs/demo.mp4) · [Captions/transcript](docs/demo.vtt). The demo uses actual browser captures of generated DICOMs, held for readability; it has no narration and is not a real-time latency recording.
 
 <details>

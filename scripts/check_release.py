@@ -10,6 +10,14 @@ ROOT = Path(__file__).resolve().parents[1]
 ROOT_FILES = {".gitignore", ".gitattributes", ".dockerignore", "README.md", "LICENSE", "THIRD_PARTY.md", "Dockerfile",
               "requirements.txt", "requirements-lock.txt", "pyproject.toml", "run.py", "setup.ps1", "start.ps1"}
 PUBLIC_MEDIA = {"docs/local-demo.png", "docs/demo.mp4"}
+TRAINING_FILES = {
+    "training/README.md", "training/provenance.json", "training/config/epoch8_config.json",
+    "training/notebooks/convnext_tiny_budget.ipynb",
+    "training/archive/convnext/cnn_convnext.py", "training/archive/convnext/parent_cnn_training.py",
+    "training/archive/convnext/convnext_train.py", "training/archive/convnext/prepare_convnext.py",
+    "training/archive/parent_preparation/cnn_training.py", "training/archive/parent_preparation/prepare.py",
+    "training/archive/parent_preparation/label_audit.py",
+}
 
 
 def check_release(root=ROOT):
@@ -26,7 +34,7 @@ def check_release(root=ROOT):
         if not path.is_file() or path.is_symlink():
             issues.append(f"Missing file or symlink: {name}")
             continue
-        allowed = name in ROOT_FILES or name in PUBLIC_MEDIA
+        allowed = name in ROOT_FILES or name in PUBLIC_MEDIA or name in TRAINING_FILES
         allowed |= name.startswith(("app/", "scripts/", "tests/")) and path.suffix == ".py"
         allowed |= name.startswith("docs/") and path.suffix in {".md", ".json", ".vtt"}
         allowed |= name in {"models/README.md", "models/manifest.json"}

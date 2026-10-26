@@ -2,7 +2,7 @@
 
 ## Project work
 
-Owais Khan trained the selected ConvNeXt-Tiny attention-MIL model in this project using ImageNet initialization and publicly supplied weak labels. The local application, preprocessing integration, model packaging, input checks, worker/API/UI and verification tooling were developed with AI coding assistance. The architecture and training data are not claimed as original research inventions.
+Owais Khan's project trained the selected ConvNeXt-Tiny attention-MIL model using ImageNet initialization and publicly supplied weak labels. Training implementation and the local application, preprocessing integration, model packaging, input checks, worker/API/UI and verification tooling used AI coding assistance. The architecture and training data are not claimed as original research inventions. The [training archive](training/README.md) preserves the original source/configuration and records its recovery from saved Kaggle artifacts.
 
 The deployed checkpoint is the project's epoch-8 model, confirmed public macro ROC AUC **0.833**. Public Raptor/S6 models and the separate 0.950 reproduction are not part of this application's model.
 
