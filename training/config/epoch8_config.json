@@ -1,0 +1,120 @@
+{
+  "targets": [
+    "ACL",
+    "MCL",
+    "Medial Meniscus",
+    "Lateral Meniscus",
+    "Medial OA",
+    "Lateral OA",
+    "PF OA",
+    "Effusion",
+    "Synovitis",
+    "Baker's",
+    "Contusion",
+    "Fracture"
+  ],
+  "slots": [
+    [
+      "Sagittal",
+      true
+    ],
+    [
+      "Coronal",
+      true
+    ],
+    [
+      "Axial",
+      true
+    ],
+    [
+      "Sagittal",
+      false
+    ],
+    [
+      "Coronal",
+      false
+    ]
+  ],
+  "seed": 42,
+  "pixel_key": "2d0240242985abb81c302fdc9f134933769e3d1032b62f35eed3be9b6f390c79",
+  "feature_key": "7e57b2d2beb9af5985bad303f901994fc29d2547975038ab96604011efa81c74",
+  "data_hashes": {
+    "labels": "6f704a7bdb2f894cc49445b19ba7c4378c3f548d3449e00361e10044bee40920",
+    "original_split": "da2deb6edfcb6eda4a9a8ef3378962bbc128b6e080189d6afb61f143683a7f6c",
+    "train_csv": "8ca2203c0e9d61c080c7a314c7cdb51c1b03a1d9eb4770819f7f34af53ef4e33",
+    "series_csv": "573c1d80772bf41211c91b149c95677385a1c22d63f485c347f1b46c0177aef3",
+    "patient_manifest": "6a5e42f81518e073f398325d95ce307cd8bc10bfe32bdcb98fcd19916870895c"
+  },
+  "pixel_partitions": [
+    {
+      "root": "/kaggle/input/notebooks/owaiskhan15/knee-dino-cpu-pixel-cache/knee_dino_small",
+      "manifest_sha256": "2e072efafdcaaac6a4694048c6cc27edac1dcd646423338f870de540601d1584",
+      "status_sha256": "059d3347690613c46c7b274bd20f718f170c4c9a05fe447f96215aaa92e76b39",
+      "rows": 2175
+    },
+    {
+      "root": "/kaggle/input/notebooks/owaiskhan15/knee-dino-cpu-pixel-cache-b/knee_dino_small",
+      "manifest_sha256": "33f30cfe809cb5a9066713f0bdac9706e1683be049fb99f0530224c25f947d00",
+      "status_sha256": "248b225bd618dfc3893974801582b2d5ab1bd6a488a092ae6b531ddaf05da08f",
+      "rows": 2175
+    }
+  ],
+  "expected_counts": {
+    "fit": 3655,
+    "weak_validation": 637,
+    "gold": 58
+  },
+  "encoder": "torchvision.convnext_tiny",
+  "pretrained_weights": "ConvNeXt_Tiny_Weights.IMAGENET1K_V1",
+  "official_weight_url": "https://download.pytorch.org/models/convnext_tiny-983f1562.pth",
+  "encoder_parameter_count": 27820128,
+  "parameter_count": 28089208,
+  "parent_bundle": "/kaggle/input/notebooks/owaiskhan15/knee-cnn-cpu-preparation/knee_cnn_preparation/bundle",
+  "parent_config_sha256": "d9667605124d9e55a809fa75b67ff0bead8e36aa41d506297b38a969e64d4b2d",
+  "parent_module_sha256": "fe38ece1a0a6e692d45f20e1f114cc876cbda16f97aec09c840e3adbc69a6ca2",
+  "max_gpu_minutes": 240,
+  "label_source": "Pilkwang report_labels_v2: YES/NO soft scores, UNK masked; unchanged",
+  "selection": "minimum_full_weak_validation_soft_bce",
+  "input_contract": "Existing unchanged 224px cached adjacent-slice triplets; ImageNet normalization; no extra resize/crop",
+  "expert_role": "Repeatedly used development diagnostic; not independent validation",
+  "settings": {
+    "projection": 256,
+    "train_windows_per_slot": 2,
+    "validation_windows": 40,
+    "batch_size": 2,
+    "accumulation": 4,
+    "workers": 2,
+    "epochs": 8,
+    "encoder_lr": 3e-05,
+    "head_lr": 0.0003,
+    "weight_decay": 0.0001,
+    "patience": 3,
+    "min_delta": 0.0001,
+    "warmup_steps": 40,
+    "intensity_jitter": 0.1,
+    "encoder_chunk": 32,
+    "max_minutes": 240,
+    "benchmark_warmup_optimizer_updates": 5,
+    "benchmark_steady_optimizer_updates": 20,
+    "validation_probe_warmup_batches": 2,
+    "validation_probe_timed_batches": 8,
+    "cudnn_benchmark": false,
+    "runtime_benchmark_required": true,
+    "execution_settings_require_gpu_profile": false
+  },
+  "runtime": {
+    "torch": "2.11.0+cpu",
+    "torchvision": "0.26.0+cpu",
+    "python": "3.13.15"
+  },
+  "hashes": {
+    "cnn_convnext.py": "2b48dbe18a32e4a5e9c8c9adb83250e0f399c49343ff5cda6b0155bd855f29cd",
+    "parent_cnn_training.py": "fe38ece1a0a6e692d45f20e1f114cc876cbda16f97aec09c840e3adbc69a6ca2",
+    "prepare_convnext.py": "9052cd372119aaad01cbb7e32a1d530a9f05d099ce6fc443be4d334f9101bb0b",
+    "convnext_train.py": "ac3516fee36c3a8b0b6191592e09844de52ab6803d41eda779ac4dbf912a6f3a",
+    "study_labels_splits.csv": "82401171a2bade3e7a18aa226d453a61e14e1c3591c26f2a669fa7cd2ed0eb99",
+    "pixel_index.csv": "a7c3920ba0e91aee6a18b86aa1ca888b43db61ba06ccfcce7e3781a435cb985e",
+    "initial_model.pt": "bf6c454ddb7f1ed055f4fbeaca51a46b655444d6a40108e725a7795f4ab17da9",
+    "preflight.json": "aaba1ac862a5992560f75e7c43c82f15e0d616cd2799ffd9db50f0b6a5018552"
+  }
+}

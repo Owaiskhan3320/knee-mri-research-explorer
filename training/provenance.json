@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "archive_import_date": "2026-10-26",
+  "purpose": "Recover historical source and checkpoint configuration; no new training or evaluation",
+  "experiment": {
+    "training_notebook_url": "https://www.kaggle.com/code/owaiskhan15/knee-convnext-tiny-budget?scriptVersionId=360434584",
+    "training_version": 360434584,
+    "cpu_parity_notebook_url": "https://www.kaggle.com/code/owaiskhan15/knee-convnext-raw-parity?scriptVersionId=360713817",
+    "preparation_artifact_source": "Pinned inputs of training version 360434584; no latest-version substitution",
+    "configured_gpu_ceiling_minutes": 240,
+    "historical_kaggle_displayed_runtime": "32m 11s; GPU T4 x2; this is a saved historical run"
+  },
+  "checkpoint": {
+    "sha256": "e30535be63503f489d3e0961afa51cce83bfe7d9766faffbe5dfc2be454310dd",
+    "selected_epoch": 8,
+    "trained": true,
+    "data_fingerprint": "f5116e8e4836c86bfd7f551ab8eaa182efb1bd12dc2742883c5259a1e0b122a3",
+    "weights_included": false
+  },
+  "files": {
+    "archive/convnext/cnn_convnext.py": {
+      "sha256": "2b48dbe18a32e4a5e9c8c9adb83250e0f399c49343ff5cda6b0155bd855f29cd",
+      "bytes": 11210,
+      "hash_anchor": "checkpoint config.hashes",
+      "recovered_from": "saved CPU parity output, version 360713817",
+      "changes": "none; original UTF-8 bytes"
+    },
+    "archive/convnext/parent_cnn_training.py": {
+      "sha256": "fe38ece1a0a6e692d45f20e1f114cc876cbda16f97aec09c840e3adbc69a6ca2",
+      "bytes": 31221,
+      "hash_anchor": "checkpoint config.hashes",
+      "recovered_from": "saved CPU parity output, version 360713817",
+      "changes": "none; original UTF-8 bytes"
+    },
+    "archive/convnext/convnext_train.py": {
+      "sha256": "ac3516fee36c3a8b0b6191592e09844de52ab6803d41eda779ac4dbf912a6f3a",
+      "bytes": 29427,
+      "hash_anchor": "checkpoint config.hashes",
+      "recovered_from": "rendered source in training version 360434584 pinned Input bundle",
+      "changes": "none; original UTF-8 bytes"
+    },
+    "archive/convnext/prepare_convnext.py": {
+      "sha256": "9052cd372119aaad01cbb7e32a1d530a9f05d099ce6fc443be4d334f9101bb0b",
+      "bytes": 6542,
+      "hash_anchor": "checkpoint config.hashes",
+      "recovered_from": "rendered source in training version 360434584 pinned Input bundle",
+      "changes": "none; original UTF-8 bytes"
+    },
+    "archive/parent_preparation/label_audit.py": {
+      "sha256": "c5bdf72e28c0d1e2b6b52b9f1ebcd58b0f7040e055192f3ea0f87b20d12c90e8",
+      "bytes": 23302,
+      "hash_anchor": "hash read from pinned parent bundle config.json in training Input view",
+      "recovered_from": "rendered source in training version 360434584 pinned Input bundle",
+      "changes": "none; original UTF-8 bytes"
+    },
+    "archive/parent_preparation/prepare.py": {
+      "sha256": "a0f5f5b2095f839234109e84cb50774e81a4bd99f6a55d41b3ae609b129af14c",
+      "bytes": 15084,
+      "hash_anchor": "hash read from pinned parent bundle config.json in training Input view",
+      "recovered_from": "rendered source in training version 360434584 pinned Input bundle",
+      "changes": "none; original UTF-8 bytes"
+    },
+    "archive/parent_preparation/cnn_training.py": {
+      "sha256": "fe38ece1a0a6e692d45f20e1f114cc876cbda16f97aec09c840e3adbc69a6ca2",
+      "bytes": 31221,
+      "hash_anchor": "checkpoint config.parent_module_sha256",
+      "recovered_from": "same unchanged parent runtime under its original preparation filename",
+      "changes": "none; original UTF-8 bytes"
+    }
+  },
+  "configuration": {
+    "path": "config/epoch8_config.json",
+    "sha256": "36dc66652c84d0a6621b095d82019f7fdf91851e6c61d204cb8afcf6abf31845",
+    "source": "Exact checkpoint config dictionary, reserialized as UTF-8 JSON with trailing newline",
+    "runtime_field_scope": "CPU preparation environment metadata, not a full record of the GPU training environment"
+  },
+  "notebook": {
+    "path": "notebooks/convnext_tiny_budget.ipynb",
+    "sha256": "2aabdbc23c658d455bb142567ef9e556b9d8101b1d658165c047d1a293cdbea6",
+    "original_download_sha256": "0f49e44b31b87229741d9e8d00c35c63fd0b7c5901f059bb8d1e03e4be21b4d8",
+    "original_code_cell_sha256": "847f988b911d8c16ea7d2bf2101885585b8e8990577ec7e8da142a2a2006cd5a",
+    "published_code_cell_sha256": "9f4ea8ec67dfb01e4b7bd189ef553cc5a363bc495783b7dbc25ab132897991ec",
+    "original_code_cell_index": 1,
+    "published_code_cell_index": 2,
+    "changes": [
+      "RUN_GPU_TRAINING changed from True to False",
+      "execution counts, outputs and original metadata removed",
+      "archive explanation added; original experiment markdown retained"
+    ],
+    "training_enabled": false
+  },
+  "split": {
+    "counts": {
+      "fit": 3655,
+      "weak_validation": 637,
+      "gold": 58
+    },
+    "policy": "Inherited fixed split; val renamed weak_validation without re-sampling; verified_group cannot cross splits",
+    "split_table_sha256": "82401171a2bade3e7a18aa226d453a61e14e1c3591c26f2a669fa7cd2ed0eb99",
+    "original_split_sha256": "da2deb6edfcb6eda4a9a8ef3378962bbc128b6e080189d6afb61f143683a7f6c",
+    "group_manifest_sha256": "6a5e42f81518e073f398325d95ce307cd8bc10bfe32bdcb98fcd19916870895c",
+    "tables_included": false
+  },
+  "selection": {
+    "metric": "minimum_full_weak_validation_soft_bce",
+    "min_delta": 0.0001,
+    "selected_epoch": 8,
+    "expert_role": "Repeatedly used development diagnostic; not independent validation"
+  },
+  "limitations": [
+    "Private labels, study/group tables, pixel caches and initial/trained weights are required original inputs and are excluded.",
+    "The earlier baseline/DINO split-creation and pixel-cache generation entry points are referenced dependencies, not fully reconstructed by this source archive.",
+    "Full original GPU package/environment versions have not been recovered; config.runtime records preparation.",
+    "Training curves, validation predictions and per-finding evaluation are not added in this archive step."
+  ],
+  "this_import": {
+    "training_started": false,
+    "gpu_used": false,
+    "paid_services_used": false,
+    "historical_sources_modified": false,
+    "notebook_safety_edit_documented": true
+  }
+}
