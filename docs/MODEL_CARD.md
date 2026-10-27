@@ -6,6 +6,7 @@
 - Selection: minimum weak-validation BCE. Epoch 8 BCE 0.537434; weak macro AUC 0.847996. Expert development AUC 0.853143 is not independent clinical validation.
 - Evaluation recovery: original saved predictions were evaluated again on 27 October 2026 against the exact checkpoint-bound label/split table. Both macro AUCs and all per-finding AUCs reconcile with the saved metric files. See [per-finding metrics, coverage and reproduction](PER_FINDING_EVALUATION.md). This did not change the checkpoint or public score.
 - Confirmed public competition macro ROC AUC: 0.833. This is not 83.3% accuracy. It is not the public S6 reproduction's 0.950.
+- Retrospective competition record: the original epoch-8 submission scored 0.824 private AUC. A separate extra-epoch JEV-refinement trial scored 0.834 public / 0.823 private and worsened the unchanged validation BCE; it is not deployed. [Training history and paired score sources](TRAINING_HISTORY.md) distinguish the two checkpoints and the confounded comparison.
 - Image contract: 40 windows of 3 neighbouring slices at 224x224; explicit validity masks; original series metadata required.
 - Outputs: uncalibrated sigmoid model scores. No diagnostic thresholds, medical advice or lesion localization.
 - Labels and reuse: Pilkwang Kim's public RSNA Knee LLM-read report labels, version 1, report_labels_v2.csv. YES/NO soft scores retained, UNK masked. Report extraction was performed by the label publisher; this project consumed the published outputs. See THIRD_PARTY.md. Later JEV-refinement epoch9 is not deployed.
