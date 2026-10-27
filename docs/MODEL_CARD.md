@@ -4,6 +4,7 @@
 - Targets: ACL, MCL, medial/lateral meniscus, medial/lateral/patellofemoral OA, effusion, synovitis, Baker's cyst, contusion, fracture.
 - Training: 3655 fitting studies with public report-derived weak labels; 637 weak-validation studies; 58 expert studies used repeatedly for development.
 - Selection: minimum weak-validation BCE. Epoch 8 BCE 0.537434; weak macro AUC 0.847996. Expert development AUC 0.853143 is not independent clinical validation.
+- Evaluation recovery: original saved predictions were evaluated again on 27 October 2026 against the exact checkpoint-bound label/split table. Both macro AUCs and all per-finding AUCs reconcile with the saved metric files. See [per-finding metrics, coverage and reproduction](PER_FINDING_EVALUATION.md). This did not change the checkpoint or public score.
 - Confirmed public competition macro ROC AUC: 0.833. This is not 83.3% accuracy. It is not the public S6 reproduction's 0.950.
 - Image contract: 40 windows of 3 neighbouring slices at 224x224; explicit validity masks; original series metadata required.
 - Outputs: uncalibrated sigmoid model scores. No diagnostic thresholds, medical advice or lesion localization.

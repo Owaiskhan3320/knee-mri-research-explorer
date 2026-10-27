@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "recovery_date": "2026-10-27",
+  "source_notebook": "https://www.kaggle.com/code/owaiskhan15/knee-convnext-tiny-budget?scriptVersionId=360434584",
+  "labels_source_notebook": "https://www.kaggle.com/code/owaiskhan15/knee-convnext-cpu-preparation?scriptVersionId=360433261",
+  "recovery_method": "Original saved notebook output archives downloaded through Kaggle; selected files copied without modification.",
+  "labels_hash_anchor": "Checkpoint config.hashes.study_labels_splits.csv; exact match required before evaluation.",
+  "training_archive_deploy_checkpoint_sha256": "e30535be63503f489d3e0961afa51cce83bfe7d9766faffbe5dfc2be454310dd",
+  "recovered_files": {
+    "gold_auc.csv": {
+      "bytes": 439,
+      "sha256": "7391aeb1f37cea8f02ca80a612262be34c36e0408fcec10b3fe2de6c026abf9c",
+      "contents_published": false
+    },
+    "gold_predictions.csv": {
+      "bytes": 17272,
+      "sha256": "b153b4f37bde89f2c016ef6735b2446849710fcb98e4d36c9827514011a0aaf2",
+      "contents_published": false
+    },
+    "run_summary.json": {
+      "bytes": 1780,
+      "sha256": "abc6e430aec12d2e6a9004b04faedc7cb6a4b5bd2e834547beb407993e574882",
+      "contents_published": false
+    },
+    "study_labels_splits.csv": {
+      "bytes": 702513,
+      "sha256": "82401171a2bade3e7a18aa226d453a61e14e1c3591c26f2a669fa7cd2ed0eb99",
+      "contents_published": false
+    },
+    "training_history.csv": {
+      "bytes": 918,
+      "sha256": "a77c711157c6320796f21f191700034ae246e736c5eae9eff614da61aac2a26f",
+      "contents_published": false
+    },
+    "val_auc.csv": {
+      "bytes": 461,
+      "sha256": "90ea58de4811c35a1e339bc5462f6e385bbbaa994604fce71dca97d93ae22bcc",
+      "contents_published": false
+    },
+    "val_predictions.csv": {
+      "bytes": 189570,
+      "sha256": "05db1b1ae1a7b79ae56417f3b32f3970d4991f90db668db075cd7014410da851",
+      "contents_published": false
+    }
+  },
+  "privacy": "Study-level predictions, label/group table and raw outputs remain private and are not distributed. Only hashes and aggregate evaluation are published.",
+  "scope": "Re-evaluation of existing saved epoch-8 predictions; no inference, training, GPU use, submission or payment."
+}
