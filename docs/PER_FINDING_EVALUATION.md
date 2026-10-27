@@ -70,4 +70,4 @@ python -m pytest -q tests/test_evaluate_predictions.py
 
 Tests cover hand-calculated and exhaustive-pair AUCs with ties, unknown masking, soft-label BCE, row/column alignment, incomplete/duplicate studies, invalid probabilities, group leakage, single-class/no-label handling, duplicate CSV headers, changed historical hashes, and the complete CSV-to-report command path. Full numerical reproduction of the historical scores requires authorized access to the private inputs. They are intentionally not distributed in this repository.
 
-The [training history and experiment record](TRAINING_HISTORY.md) now includes the recovered curves and earlier/later attempts. Further per-finding error analysis remains follow-up work. This evaluation adds no threshold tuning, confidence intervals or clinical claim.
+The [training history and experiment record](TRAINING_HISTORY.md) includes the recovered curves and earlier/later attempts. [Label coverage and error analysis](ERROR_ANALYSIS.md) adds fixed-cutoff disagreements, ranking-error counts and a private review queue. These records add no threshold tuning, confidence intervals or clinical claim.

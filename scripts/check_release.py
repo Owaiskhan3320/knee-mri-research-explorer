@@ -9,7 +9,8 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 ROOT_FILES = {".gitignore", ".gitattributes", ".dockerignore", "README.md", "LICENSE", "THIRD_PARTY.md", "Dockerfile",
               "requirements.txt", "requirements-lock.txt", "pyproject.toml", "run.py", "setup.ps1", "start.ps1"}
-PUBLIC_MEDIA = {"docs/local-demo.png", "docs/demo.mp4", "docs/training_curves.png"}
+PUBLIC_MEDIA = {"docs/local-demo.png", "docs/demo.mp4", "docs/training_curves.png",
+                "docs/label_coverage.png", "docs/prediction_disagreements.png"}
 TRAINING_FILES = {
     "training/README.md", "training/provenance.json", "training/config/epoch8_config.json",
     "training/notebooks/convnext_tiny_budget.ipynb",

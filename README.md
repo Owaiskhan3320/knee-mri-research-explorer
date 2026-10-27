@@ -14,6 +14,8 @@ The [original training source and checkpoint configuration](training/README.md) 
 
 [Training history and decisions](docs/TRAINING_HISTORY.md) includes the recovered eight-epoch curves, replayed checkpoint selection, the earlier budget-stopped baseline and the rejected extra-epoch refinement. The paired competition results are 0.833 public / 0.824 private for the deployed model and 0.834 public / 0.823 private for the trial; neither is a clinical accuracy claim.
 
+[Label coverage and error analysis](docs/ERROR_ANALYSIS.md) adds aggregate supervision coverage, ranking errors and disagreements at a fixed diagnostic cutoff. It identifies sparse synovitis/fracture labels and MCL/lateral-meniscus ranking weaknesses; the private case-review queue is excluded from GitHub.
+
 [Watch the 60-second captioned demo](docs/demo.mp4) · [Captions/transcript](docs/demo.vtt). The demo uses actual browser captures of generated DICOMs, held for readability; it has no narration and is not a real-time latency recording.
 
 <details>
