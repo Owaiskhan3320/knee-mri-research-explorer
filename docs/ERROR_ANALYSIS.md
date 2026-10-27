@@ -77,6 +77,8 @@ For authorized private review, first verify case/label identity and available se
 3. Keep ranking evaluation separate from operating-point work. A future threshold/calibration study needs a separate protocol and validation strategy; the reused expert58 set should not become an independent-test claim.
 4. Test input-coverage or pooling hypotheses under the planned controlled experiment. These aggregate outputs contain no proof that either explains the observed disagreements, and no score improvement is promised.
 
+The next step is now specified in the [controlled pooling protocol](POOLING_EXPERIMENT.md). It trains both arms from the same initial shared tensors, keeps the data/learning setup matched, and remains disabled pending a CPU feasibility decision. This is a design, not an ablation result.
+
 ## Reproduce
 
 [The offline analysis script](../scripts/analyze_prediction_errors.py) uses the same private prediction, AUC, run-summary and checkpoint-bound label table as the [27 October evaluation](PER_FINDING_EVALUATION.md). It checks their hashes, validates all three split sizes and known-label masks, and reconciles AUCs and the original selection loss before producing diagnostics. Core reconstruction needs only Python 3.12's standard library.

@@ -1,0 +1,23 @@
+{
+  "status": "POOLING_PROTOCOL_VALID",
+  "recorded_date": "2026-10-27",
+  "scheduled_task_date": "2026-10-30",
+  "execution_status": "DEFERRED",
+  "training_started": false,
+  "models_constructed": false,
+  "private_data_or_weights_loaded": false,
+  "gpu_used": false,
+  "paid_services_used": false,
+  "one_intended_arm_difference": "pooling",
+  "epochs_per_arm": 8,
+  "optimizer_updates_per_arm": 3656,
+  "shared_initial_tensors_runtime_verified": false,
+  "cpu_training_time_measured": false,
+  "parameter_counts_derived_from_source_shapes": {
+    "attention_control": 28089208,
+    "mean_candidate": 28021868,
+    "attention_only_difference": 67340
+  },
+  "parameter_count_limitation": "Pooling-method comparison includes a capacity difference; it is not a capacity-matched study.",
+  "results": null
+}
