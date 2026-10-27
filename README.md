@@ -16,6 +16,8 @@ The [original training source and checkpoint configuration](training/README.md) 
 
 [Label coverage and error analysis](docs/ERROR_ANALYSIS.md) adds aggregate supervision coverage, ranking errors and disagreements at a fixed diagnostic cutoff. It identifies sparse synovitis/fracture labels and MCL/lateral-meniscus ranking weaknesses; the private case-review queue is excluded from GitHub.
 
+[Controlled pooling experiment](docs/POOLING_EXPERIMENT.md): a checked design for retraining attention and masked-mean pooling under matched conditions. Execution is disabled and deferred pending complete local data, a tested CPU runner and a resource-feasibility gate. No ablation results are claimed.
+
 [Watch the 60-second captioned demo](docs/demo.mp4) · [Captions/transcript](docs/demo.vtt). The demo uses actual browser captures of generated DICOMs, held for readability; it has no narration and is not a real-time latency recording.
 
 <details>
