@@ -68,7 +68,7 @@ Use median timed observations, count startup/warmup excess separately, and estim
 
 If either arm cannot finish under the ceilings, preserve the failure/feasibility evidence and mark the comparison incomplete. Do not shorten one arm, reduce its studies/windows, or compare a partial epoch with a complete model. A frozen-feature head study would answer a different question and would need its own protocol. There are no automatic retries, resumes or budget extensions.
 
-Current project readiness is **deferred**:
+Current project readiness is **deferred**. The [31 October task's feasibility audit](POOLING_FEASIBILITY.md), performed on 27 October, found no matching image shards in the audited project directories or seven saved result archives; the three replay studies are all weak validation. It stopped before benchmarking and records no accuracy results:
 
 | Requirement | Current evidence |
 | --- | --- |
@@ -94,4 +94,4 @@ python -m pytest -q tests/test_pooling_protocol.py
 
 The first command must report `POOLING_PROTOCOL_VALID` and `execution_status: DEFERRED`, with `results: null`. Its output should match `docs/pooling_protocol_check.json`. The standard-library checker binds the original configuration/model/reader/trainer sources, rejects per-arm training overrides, trained-checkpoint initialization, changed shared settings, expert-based selection, enabled/GPU execution and invented results/readiness. Its tests use only public source files; no model is constructed or trained.
 
-The next timeline task is a feasibility decision under the current CPU-only/free-service constraints. If prerequisites or timing fail, record the deferral. Keep the deployed epoch-8 model and all existing results unchanged; this protocol provides no evidence of a new score.
+The feasibility decision is now recorded in [POOLING_FEASIBILITY.md](POOLING_FEASIBILITY.md). Execution remains deferred under the current CPU-only/free-service constraints. The deployed epoch-8 model and all existing results are unchanged; this protocol provides no evidence of a new score.

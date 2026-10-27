@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "recorded_date": "2026-10-27",
+  "scheduled_task_date": "2026-10-31",
+  "experiment_id": "convnext-pooling-pilot-v1",
+  "decision": "DEFERRED_PREREQUISITES_NOT_READY",
+  "stopped_at": "data_and_implementation_readiness_gate",
+  "protocol_sha256": "0c383efd373669309c3bbb6c06e01fceb805b60bd48f85ccf8147c6479b962d2",
+  "audit_scope": {
+    "project_directories": [
+      "data/",
+      "models/",
+      ".runtime/"
+    ],
+    "existing_result_archives_inspected": 7,
+    "method": "Metadata-only filename survey, archive central-directory inspection, streamed initialization/index hashes and private replay-to-split join.",
+    "scope_limit": "This surveys the named project locations and seven known saved archives, not every drive or remote Kaggle storage.",
+    "excluded_directory_names": [
+      ".git",
+      ".venv",
+      "__pycache__",
+      "node_modules",
+      "site-packages"
+    ],
+    "archive_search_depth": "Central-directory entries in seven named result archives; nested archive payloads were not recursively expanded."
+  },
+  "fixed_data": {
+    "expected_studies": 4350,
+    "pixel_index_rows": 4350,
+    "pixel_partitions": 2,
+    "partition_rows": [
+      2175,
+      2175
+    ],
+    "required_partition_shard_references": 88,
+    "distinct_shard_basenames": 44,
+    "matching_local_shard_filename_candidates": 0,
+    "matching_shard_archive_members": 0,
+    "local_pixel_manifest_or_status_candidates": 0,
+    "verified_complete_partitions": 0
+  },
+  "verified_available_assets": {
+    "label_split_table": {
+      "sha256": "82401171a2bade3e7a18aa226d453a61e14e1c3591c26f2a669fa7cd2ed0eb99",
+      "bytes": 702513,
+      "hash_matches_checkpoint": true
+    },
+    "pixel_index_in_saved_preparation_archive": {
+      "sha256": "a7c3920ba0e91aee6a18b86aa1ca888b43db61ba06ccfcce7e3781a435cb985e",
+      "bytes": 1274599,
+      "hash_matches_checkpoint": true
+    },
+    "pretraining_initial_state_in_saved_preparation_archive": {
+      "sha256": "bf6c454ddb7f1ed055f4fbeaca51a46b655444d6a40108e725a7795f4ab17da9",
+      "bytes": 112429834,
+      "hash_matches_checkpoint": true,
+      "weights_deserialized": false
+    },
+    "replay_studies": {
+      "unique_studies": 3,
+      "split_counts": {
+        "fit": 0,
+        "weak_validation": 3,
+        "gold": 0
+      },
+      "reference_input_hashes_match": true,
+      "eligible_as_full_fitting_dataset": false
+    }
+  },
+  "implementation": {
+    "cpu_ablation_trainer_implemented": false,
+    "note": "Only the historical CUDA-required training driver and the disabled design checker are archived; the CPU ablation model/runner tests remain future requirements."
+  },
+  "blocking_reasons": [
+    "FULL_PIXEL_SHARDS_NOT_FOUND_IN_AUDITED_LOCATIONS",
+    "CPU_ABLATION_RUNNER_NOT_IMPLEMENTED",
+    "REPRESENTATIVE_CPU_TIMING_AND_RSS_NOT_MEASURED"
+  ],
+  "resource_policy": {
+    "allowed_device": "cpu",
+    "gpu_runner_hours": 0,
+    "paid_services_allowed": false,
+    "proposed_total_wall_minutes": 120,
+    "profile_ceiling_minutes": 5,
+    "process_rss_ceiling_gib": 4,
+    "ceiling_proven_feasible": false
+  },
+  "measurements": {
+    "paired_cpu_training_seconds": null,
+    "projected_pair_wall_seconds": null,
+    "peak_training_rss_bytes": null
+  },
+  "actions": {
+    "archive_extraction": false,
+    "new_downloads": false,
+    "model_constructed": false,
+    "weights_deserialized": false,
+    "benchmark_started": false,
+    "training_started": false,
+    "inference_started": false,
+    "gpu_used": false,
+    "payment_made": false,
+    "dataset_or_epoch_reduction": false,
+    "frozen_feature_substitution": false,
+    "serving_model_changed": false,
+    "competition_selection_changed": false
+  },
+  "results": null,
+  "next_step": "Preserve the protocol and deployment. Continue portfolio documentation/release work. Reconsider fitting only after all fixed inputs, tested CPU implementation and measured resource gates are satisfied."
+}
