@@ -74,4 +74,4 @@ Original execution requires authorized access to the pinned Kaggle inputs: fixed
 
 The archive is an inspection record of the earlier experiment. App startup, setup and archive verification do not invoke its preparation or training functions. Calling the preparation functions can download official initialization weights and create private data artifacts; this import did neither. A future training run would need its own compute plan.
 
-Training curves, prediction tables, per-finding evaluation and additional experiments are separate follow-up work. This commit does not manufacture missing results or claim to reproduce the original score from a public clone.
+On 27 October, [per-finding evaluation](../docs/PER_FINDING_EVALUATION.md) was reproduced from the recovered original predictions and exact checkpoint-bound label table. Both macro AUCs and all 12 finding AUCs reconcile with the saved run; only aggregate results and provenance are published. Full reproduction still requires authorized private inputs. Training curves and additional experiments remain follow-up work.

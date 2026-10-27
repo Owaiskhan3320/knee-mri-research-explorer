@@ -10,6 +10,8 @@ Training used [Pilkwang Kim's public report-derived labels](https://www.kaggle.c
 
 The [original training source and checkpoint configuration](training/README.md) are archived with source hashes, split/selection details and links to the saved Kaggle versions. Imported on 26 October 2026; this was not a new training run. The published notebook has training disabled.
 
+[Per-finding evaluation](docs/PER_FINDING_EVALUATION.md) was reproduced from the original saved predictions on 27 October: 0.847996 weak-validation macro AUC and 0.853143 on the reused expert development set. Both reconcile with the saved run. The offline evaluator, coverage counts, provenance and aggregate JSON reports are included; study-level inputs remain private.
+
 [Watch the 60-second captioned demo](docs/demo.mp4) · [Captions/transcript](docs/demo.vtt). The demo uses actual browser captures of generated DICOMs, held for readability; it has no narration and is not a real-time latency recording.
 
 <details>

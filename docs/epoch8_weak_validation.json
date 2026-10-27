@@ -1,0 +1,165 @@
+{
+  "split": "weak_validation",
+  "studies": 637,
+  "targets": [
+    "ACL",
+    "MCL",
+    "Medial Meniscus",
+    "Lateral Meniscus",
+    "Medial OA",
+    "Lateral OA",
+    "PF OA",
+    "Effusion",
+    "Synovitis",
+    "Baker's",
+    "Contusion",
+    "Fracture"
+  ],
+  "per_target": [
+    {
+      "target": "ACL",
+      "known": 586,
+      "unknown": 51,
+      "positives": 181,
+      "negatives": 405,
+      "auc": 0.830871018347998,
+      "auc_status": "defined",
+      "soft_bce": 0.5181034709199743
+    },
+    {
+      "target": "MCL",
+      "known": 584,
+      "unknown": 53,
+      "positives": 121,
+      "negatives": 463,
+      "auc": 0.7665601627902826,
+      "auc_status": "defined",
+      "soft_bce": 0.4924328158418185
+    },
+    {
+      "target": "Medial Meniscus",
+      "known": 605,
+      "unknown": 32,
+      "positives": 370,
+      "negatives": 235,
+      "auc": 0.8377228292121909,
+      "auc_status": "defined",
+      "soft_bce": 0.5850360859812347
+    },
+    {
+      "target": "Lateral Meniscus",
+      "known": 580,
+      "unknown": 57,
+      "positives": 172,
+      "negatives": 408,
+      "auc": 0.7879759461924305,
+      "auc_status": "defined",
+      "soft_bce": 0.5386380317854638
+    },
+    {
+      "target": "Medial OA",
+      "known": 476,
+      "unknown": 161,
+      "positives": 246,
+      "negatives": 230,
+      "auc": 0.9090844821491694,
+      "auc_status": "defined",
+      "soft_bce": 0.5193679018740408
+    },
+    {
+      "target": "Lateral OA",
+      "known": 430,
+      "unknown": 207,
+      "positives": 174,
+      "negatives": 256,
+      "auc": 0.8711386494252874,
+      "auc_status": "defined",
+      "soft_bce": 0.540318752951207
+    },
+    {
+      "target": "PF OA",
+      "known": 525,
+      "unknown": 112,
+      "positives": 304,
+      "negatives": 221,
+      "auc": 0.8935311979042629,
+      "auc_status": "defined",
+      "soft_bce": 0.5465691554550672
+    },
+    {
+      "target": "Effusion",
+      "known": 569,
+      "unknown": 68,
+      "positives": 381,
+      "negatives": 188,
+      "auc": 0.8673842631373206,
+      "auc_status": "defined",
+      "soft_bce": 0.5942504969107228
+    },
+    {
+      "target": "Synovitis",
+      "known": 99,
+      "unknown": 538,
+      "positives": 86,
+      "negatives": 13,
+      "auc": 0.8264758497316637,
+      "auc_status": "defined",
+      "soft_bce": 0.5847904675417266
+    },
+    {
+      "target": "Baker's",
+      "known": 331,
+      "unknown": 306,
+      "positives": 155,
+      "negatives": 176,
+      "auc": 0.8653958944281525,
+      "auc_status": "defined",
+      "soft_bce": 0.5457168730687489
+    },
+    {
+      "target": "Contusion",
+      "known": 507,
+      "unknown": 130,
+      "positives": 188,
+      "negatives": 319,
+      "auc": 0.8214500100046689,
+      "auc_status": "defined",
+      "soft_bce": 0.5453541015300465
+    },
+    {
+      "target": "Fracture",
+      "known": 271,
+      "unknown": 366,
+      "positives": 46,
+      "negatives": 225,
+      "auc": 0.8983574879227053,
+      "auc_status": "defined",
+      "soft_bce": 0.4152935081045035
+    }
+  ],
+  "macro_auc": 0.8479956492705111,
+  "macro_auc_defined_targets": 12,
+  "macro_auc_total_targets": 12,
+  "known_target_entries": 5563,
+  "masked_soft_bce_from_probabilities": 0.5374340148708534,
+  "role": "checkpoint-selection weak validation",
+  "reconciliation": {
+    "status": "RECONCILED",
+    "maximum_per_target_auc_difference": 2.220446049250313e-16,
+    "auc_absolute_tolerance": 1e-12,
+    "bce_absolute_tolerance": 1e-06,
+    "bce_difference_from_original_logit_loss": 9.98213545155835e-09
+  },
+  "schema_version": 1,
+  "method": "saved-probability evaluation; no inference or training",
+  "source_notebook": "https://www.kaggle.com/code/owaiskhan15/knee-convnext-tiny-budget?scriptVersionId=360434584",
+  "checkpoint_sha256": "e30535be63503f489d3e0961afa51cce83bfe7d9766faffbe5dfc2be454310dd",
+  "data_fingerprint": "f5116e8e4836c86bfd7f551ab8eaa182efb1bd12dc2742883c5259a1e0b122a3",
+  "selected_epoch": 8,
+  "input_sha256": {
+    "predictions": "05db1b1ae1a7b79ae56417f3b32f3970d4991f90db668db075cd7014410da851",
+    "labels": "82401171a2bade3e7a18aa226d453a61e14e1c3591c26f2a669fa7cd2ed0eb99",
+    "recorded_auc": "90ea58de4811c35a1e339bc5462f6e385bbbaa994604fce71dca97d93ae22bcc",
+    "recorded_summary": "abc6e430aec12d2e6a9004b04faedc7cb6a4b5bd2e834547beb407993e574882"
+  }
+}
