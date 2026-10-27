@@ -9,7 +9,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 ROOT_FILES = {".gitignore", ".gitattributes", ".dockerignore", "README.md", "LICENSE", "THIRD_PARTY.md", "Dockerfile",
               "requirements.txt", "requirements-lock.txt", "pyproject.toml", "run.py", "setup.ps1", "start.ps1"}
-PUBLIC_MEDIA = {"docs/local-demo.png", "docs/demo.mp4"}
+PUBLIC_MEDIA = {"docs/local-demo.png", "docs/demo.mp4", "docs/training_curves.png"}
 TRAINING_FILES = {
     "training/README.md", "training/provenance.json", "training/config/epoch8_config.json",
     "training/notebooks/convnext_tiny_budget.ipynb",
@@ -54,7 +54,7 @@ def check_release(root=ROOT):
         raise ValueError("Release audit failed:\n" + "\n".join(issues))
     return {"status": "SOURCE_RELEASE_AUDIT_PASS", "files": files,
             "total_bytes": sum(f["bytes"] for f in files),
-            "notice": "Media require visual review; an allowlisted name alone does not prove synthetic content."}
+            "notice": "Media require visual review; an allowlisted name alone does not prove suitable public content."}
 
 
 if __name__ == "__main__":

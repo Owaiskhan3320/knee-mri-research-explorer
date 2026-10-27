@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "recorded_date": "2026-10-27",
+  "scheduled_task": "28 October experiment-history task",
+  "scope": "Historical artifacts only; no new training, inference, GPU use or payment.",
+  "original_run": {
+    "source_notebook": "https://www.kaggle.com/code/owaiskhan15/knee-convnext-tiny-budget?scriptVersionId=360434584",
+    "checkpoint_sha256": "e30535be63503f489d3e0961afa51cce83bfe7d9766faffbe5dfc2be454310dd",
+    "data_fingerprint": "f5116e8e4836c86bfd7f551ab8eaa182efb1bd12dc2742883c5259a1e0b122a3",
+    "epochs": [
+      {
+        "epoch": 1,
+        "training_loss": 0.6058321543832488,
+        "weak_validation_loss": 0.5817141003174124,
+        "weak_macro_auc": 0.7764314975722096,
+        "epoch_minutes": 5.9821601682,
+        "validation_minutes": 0.7530073907500007,
+        "completed_optimizer_updates": 457,
+        "improved_by_selection_rule": true,
+        "selected_epoch_after_validation": 1
+      },
+      {
+        "epoch": 2,
+        "training_loss": 0.5711593562351853,
+        "weak_validation_loss": 0.5753827110460588,
+        "weak_macro_auc": 0.8134937948483517,
+        "epoch_minutes": 3.6903120590333325,
+        "validation_minutes": 0.6138875779333337,
+        "completed_optimizer_updates": 914,
+        "improved_by_selection_rule": true,
+        "selected_epoch_after_validation": 2
+      },
+      {
+        "epoch": 3,
+        "training_loss": 0.5535898266671881,
+        "weak_validation_loss": 0.553863881839901,
+        "weak_macro_auc": 0.8285447315970004,
+        "epoch_minutes": 3.7018106269999995,
+        "validation_minutes": 0.6127107124000001,
+        "completed_optimizer_updates": 1371,
+        "improved_by_selection_rule": true,
+        "selected_epoch_after_validation": 3
+      },
+      {
+        "epoch": 4,
+        "training_loss": 0.5395061657358737,
+        "weak_validation_loss": 0.5511940376333854,
+        "weak_macro_auc": 0.8363315182191023,
+        "epoch_minutes": 3.570713338633334,
+        "validation_minutes": 0.6103117695000038,
+        "completed_optimizer_updates": 1828,
+        "improved_by_selection_rule": true,
+        "selected_epoch_after_validation": 4
+      },
+      {
+        "epoch": 5,
+        "training_loss": 0.5282912371658068,
+        "weak_validation_loss": 0.5427115389539166,
+        "weak_macro_auc": 0.844456796119116,
+        "epoch_minutes": 3.5701400342166685,
+        "validation_minutes": 0.6101634453000012,
+        "completed_optimizer_updates": 2285,
+        "improved_by_selection_rule": true,
+        "selected_epoch_after_validation": 5
+      },
+      {
+        "epoch": 6,
+        "training_loss": 0.5194379597775974,
+        "weak_validation_loss": 0.5399185834161545,
+        "weak_macro_auc": 0.8456601457798519,
+        "epoch_minutes": 3.5659447651666674,
+        "validation_minutes": 0.6106953632666697,
+        "completed_optimizer_updates": 2742,
+        "improved_by_selection_rule": true,
+        "selected_epoch_after_validation": 6
+      },
+      {
+        "epoch": 7,
+        "training_loss": 0.5118636308520123,
+        "weak_validation_loss": 0.539925910426669,
+        "weak_macro_auc": 0.8483330075603258,
+        "epoch_minutes": 3.5673753785833355,
+        "validation_minutes": 0.6103866901333352,
+        "completed_optimizer_updates": 3198,
+        "improved_by_selection_rule": false,
+        "selected_epoch_after_validation": 6
+      },
+      {
+        "epoch": 8,
+        "training_loss": 0.507308877077637,
+        "weak_validation_loss": 0.537434004888718,
+        "weak_macro_auc": 0.8479956492705112,
+        "epoch_minutes": 3.581012218316664,
+        "validation_minutes": 0.6105006996000005,
+        "completed_optimizer_updates": 3655,
+        "improved_by_selection_rule": true,
+        "selected_epoch_after_validation": 8
+      }
+    ],
+    "optimizer": {
+      "accumulation_groups": 3656,
+      "successful_updates": 3655,
+      "skipped_updates": 1,
+      "skipped_events": [
+        {
+          "group": 2791,
+          "epoch": 7,
+          "gradient_norm_nonfinite": true
+        }
+      ]
+    },
+    "selection": {
+      "rule": "validation_loss < best_loss - min_delta",
+      "min_delta": 0.0001,
+      "patience": 3,
+      "selected_epoch": 8,
+      "highest_validation_auc_epoch": 7,
+      "training_end_reason": "epoch_limit",
+      "expert_used_for_checkpoint_selection": false
+    },
+    "historical_training_function_minutes": 31.50749543501666,
+    "runtime_benchmark": {
+      "successful_updates": 25,
+      "excluded_warmup_updates": 5,
+      "median_last10_update_seconds": 0.5828156254999897,
+      "first_complete_epoch_fits": true
+    },
+    "historical_kaggle_displayed_runtime": "32m 11s; GPU T4 x2; trainer addresses cuda:0"
+  },
+  "experiments": [
+    {
+      "id": "efficientnet-budget-gate",
+      "source_notebook": "https://www.kaggle.com/code/owaiskhan15/knee-efficientnet-b0-budget?scriptVersionId=359488326",
+      "outcome": "budget_stopped_no_validated_candidate",
+      "completed_epochs": 0,
+      "candidate_ready": false,
+      "historical_training_function_minutes": 3.5600577007,
+      "auc": null,
+      "limitation": "No full validation/checkpoint candidate; throughput observations are not a controlled encoder comparison."
+    },
+    {
+      "id": "convnext-epoch8",
+      "source_notebook": "https://www.kaggle.com/code/owaiskhan15/knee-convnext-tiny-budget?scriptVersionId=360434584",
+      "outcome": "deployed_original_bce_winner",
+      "weak_validation_bce": 0.537434004888718,
+      "weak_validation_auc": 0.8479956492705112,
+      "expert_development_auc": 0.8531432197511802,
+      "competition_scores": {
+        "public": 0.833,
+        "private": 0.824
+      }
+    },
+    {
+      "id": "convnext-fixed-extra-epoch",
+      "source_notebook": "https://www.kaggle.com/code/owaiskhan15/knee-convnext-label-refinement?scriptVersionId=361212433",
+      "outcome": "one_extra_epoch_completed_budget_stopped_original_checkpoint_retained",
+      "completed_extra_epochs": 1,
+      "optimizer_updates": 457,
+      "training_loss_changed_targets": 0.485355681444188,
+      "weak_validation_bce": 0.5666951864888166,
+      "weak_validation_auc": 0.8485748094671313,
+      "selected_relative_epoch": 0,
+      "selected_relative_epoch_zero_means": "original eight-epoch checkpoint",
+      "reported_selected_checkpoint_expert_auc": 0.8531432197511802,
+      "historical_training_function_minutes": 6.0811233800333335,
+      "confounds": [
+        "training labels changed",
+        "one additional epoch",
+        "lower encoder and head learning rates",
+        "new optimizer and warmup/cosine schedule"
+      ]
+    },
+    {
+      "id": "convnext-epoch9-fixed-last-checkpoint-evaluation",
+      "source_notebook": "https://www.kaggle.com/code/owaiskhan15/knee-convnext-epoch9-cpu-evaluation?scriptVersionId=361217016",
+      "submission_notebook": "https://www.kaggle.com/code/owaiskhan15/knee-convnext-epoch9-cpu-evaluation?scriptVersionId=361219648",
+      "outcome": "fixed_last_checkpoint_trial_not_bce_winner",
+      "checkpoint_sha256": "edff39da7f87ddfa33f11604af313cc1e81bd32f4780b7b93543652b9110f29b",
+      "expert_development_auc": 0.8485930577178954,
+      "expert_metric_evidence": "saved CPU evaluation log; not recalculated from trial predictions in this recovery",
+      "competition_scores": {
+        "public": 0.834,
+        "private": 0.823
+      },
+      "deployed": false
+    }
+  ],
+  "limitations": [
+    "Expert58 was repeatedly reused; the refinement label source also used it in development.",
+    "Training losses before and after the label-policy change optimize different targets and cannot establish improvement.",
+    "Public/private scores are displayed to three decimals; these small differences are descriptive, not significance estimates.",
+    "This is a partial artifact-backed history. Earlier ResNet18/DINO and refinement versions 1-4 are not fully reconstructed.",
+    "No missing epoch curves, failed-run metrics, independent validation or controlled ablation results are invented."
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "recorded_date": "2026-10-27",
+  "scheduled_task_date": "2026-10-28",
+  "date_policy": "Scheduled 28 October task completed early on 27 October; Git timestamps are not backdated.",
+  "source_urls": {
+    "epoch8": "https://www.kaggle.com/code/owaiskhan15/knee-convnext-tiny-budget?scriptVersionId=360434584",
+    "efficientnet": "https://www.kaggle.com/code/owaiskhan15/knee-efficientnet-b0-budget?scriptVersionId=359488326",
+    "refinement": "https://www.kaggle.com/code/owaiskhan15/knee-convnext-label-refinement?scriptVersionId=361212433",
+    "epoch9_expert": "https://www.kaggle.com/code/owaiskhan15/knee-convnext-epoch9-cpu-evaluation?scriptVersionId=361217016",
+    "epoch9_submission": "https://www.kaggle.com/code/owaiskhan15/knee-convnext-epoch9-cpu-evaluation?scriptVersionId=361219648",
+    "epoch8_submission": "https://www.kaggle.com/code/owaiskhan15/knee-convnext-verified-inference?scriptVersionId=360716321",
+    "scores": "https://www.kaggle.com/competitions/rsna-knee-abnormality-detection/submissions"
+  },
+  "private_files": {
+    "benchmark.json": {
+      "bytes": 4796,
+      "sha256": "7a376b84856c73e3026858a828925544bff35bd726805cb9dc2923e5ec677177",
+      "contents_published": false
+    },
+    "epoch9_expert_v1.ipynb": {
+      "bytes": 55918,
+      "sha256": "d1c68dee52915d23f19d037696f2bc99a3d87e7f5b702cacdc07413ae5604626",
+      "contents_published": false
+    },
+    "knee-convnext-epoch9-cpu-evaluation.ipynb": {
+      "bytes": 55793,
+      "sha256": "cd47e2cd60dfa5eae757edb50d3f5be485229974dd0d7551f69aa75c9e3a4b87",
+      "contents_published": false
+    },
+    "knee-convnext-label-refinement.ipynb": {
+      "bytes": 88436,
+      "sha256": "e936b9ac72f5e173ff50ffce1a1053096aedf3252a1ef373e51f518dc017d8de",
+      "contents_published": false
+    },
+    "knee-efficientnet-b0-budget.ipynb": {
+      "bytes": 10736,
+      "sha256": "111cc6c235c9c1cae02a6147e0ae83a97d8f0dc483c817d635b81a0298a75bd2",
+      "contents_published": false
+    },
+    "performance_groups.csv": {
+      "bytes": 716136,
+      "sha256": "5fd02a704627a5b60f0d1bee9f44edf5452faf5fbb16bfbc61a3a1cc9169d924",
+      "contents_published": false
+    },
+    "run_summary.json": {
+      "bytes": 1780,
+      "sha256": "abc6e430aec12d2e6a9004b04faedc7cb6a4b5bd2e834547beb407993e574882",
+      "contents_published": false
+    },
+    "score_rows.txt": {
+      "bytes": 928,
+      "sha256": "11cf57125f48eb18816913ce70376615bc715e8db89f8a3fdedeba513b7f3e5f",
+      "contents_published": false
+    },
+    "training_history.csv": {
+      "bytes": 918,
+      "sha256": "a77c711157c6320796f21f191700034ae246e736c5eae9eff614da61aac2a26f",
+      "contents_published": false
+    }
+  },
+  "recovery": "Epoch-8 CSV/JSON files are original saved output archive members. Other notebooks were downloaded from the specific viewed versions. score_rows.txt contains only the two relevant rendered submission rows, preserving explicit public/private labels.",
+  "checks": "Original history and run-summary hashes also match the 27 October evaluation provenance. Later trial metrics are recovered log values, not a new prediction-level reevaluation.",
+  "privacy": "Raw notebook outputs may contain study identifiers. They remain private; only selected aggregate values and hashes are published.",
+  "plot": {
+    "tool": "matplotlib",
+    "version": "3.10.3",
+    "environment": "Existing local system Python 3.12; not an added application dependency."
+  },
+  "compute": "No notebook was run. No model was loaded. No new training, inference, GPU, subscription or payment."
+}
