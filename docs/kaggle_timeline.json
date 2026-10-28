@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "verified_date": "2026-10-29",
+  "method": "Read Kaggle Version History headings and verify each selected Edit/run link against its exact requested version ID. No notebook execution.",
+  "date_policy": "Version save dates/times are transcribed as Kaggle displayed them; the UI does not label a timezone. They are distinct from UTC execution timestamps and Git publication/recovery dates.",
+  "scope": "Ten selected historical versions, not a complete record of every earlier experiment. Quick Version dates identify saved snapshots, not the start or duration of their logged training workers.",
+  "versions": [
+    {
+      "notebook": "Knee EfficientNet B0 Budget",
+      "version_id": 359488326,
+      "displayed_version_number": 1,
+      "source_url": "https://www.kaggle.com/code/owaiskhan15/knee-efficientnet-b0-budget?scriptVersionId=359488326",
+      "save_type": "Save & Run All",
+      "save_date_as_displayed": "2026-10-18",
+      "save_time_display_text": "October 18, 2026 at 2:30 AM",
+      "selected_version_verified_by_edit_run_id": true
+    },
+    {
+      "notebook": "Knee ConvNeXt CPU Preparation",
+      "version_id": 360433261,
+      "displayed_version_number": 1,
+      "source_url": "https://www.kaggle.com/code/owaiskhan15/knee-convnext-cpu-preparation?scriptVersionId=360433261",
+      "save_type": "Save & Run All",
+      "save_date_as_displayed": "2026-10-20",
+      "save_time_display_text": "October 20, 2026 at 6:53 PM",
+      "selected_version_verified_by_edit_run_id": true
+    },
+    {
+      "notebook": "Knee ConvNeXt Tiny Budget",
+      "version_id": 360434584,
+      "displayed_version_number": 1,
+      "source_url": "https://www.kaggle.com/code/owaiskhan15/knee-convnext-tiny-budget?scriptVersionId=360434584",
+      "save_type": "Save & Run All",
+      "save_date_as_displayed": "2026-10-20",
+      "save_time_display_text": "October 20, 2026 at 6:57 PM",
+      "selected_version_verified_by_edit_run_id": true
+    },
+    {
+      "notebook": "Knee ConvNeXt Raw Parity",
+      "version_id": 360713817,
+      "displayed_version_number": 1,
+      "source_url": "https://www.kaggle.com/code/owaiskhan15/knee-convnext-raw-parity?scriptVersionId=360713817",
+      "save_type": "Save & Run All",
+      "save_date_as_displayed": "2026-10-21",
+      "save_time_display_text": "October 21, 2026 at 2:10 PM",
+      "selected_version_verified_by_edit_run_id": true
+    },
+    {
+      "notebook": "Knee ConvNeXt Verified Inference",
+      "version_id": 360716321,
+      "displayed_version_number": 1,
+      "source_url": "https://www.kaggle.com/code/owaiskhan15/knee-convnext-verified-inference?scriptVersionId=360716321",
+      "save_type": "Save & Run All",
+      "save_date_as_displayed": "2026-10-21",
+      "save_time_display_text": "October 21, 2026 at 2:19 PM",
+      "selected_version_verified_by_edit_run_id": true
+    },
+    {
+      "notebook": "Knee ConvNeXt Label Refinement",
+      "version_id": 361212433,
+      "displayed_version_number": 5,
+      "source_url": "https://www.kaggle.com/code/owaiskhan15/knee-convnext-label-refinement?scriptVersionId=361212433",
+      "save_type": "Quick Version",
+      "save_date_as_displayed": "2026-10-22",
+      "save_time_display_text": "October 22, 2026 at 11:05 PM",
+      "selected_version_verified_by_edit_run_id": true
+    },
+    {
+      "notebook": "Knee ConvNeXt Epoch9 CPU Evaluation \u2014 expert check",
+      "version_id": 361217016,
+      "displayed_version_number": 1,
+      "source_url": "https://www.kaggle.com/code/owaiskhan15/knee-convnext-epoch9-cpu-evaluation?scriptVersionId=361217016",
+      "save_type": "Quick Version",
+      "save_date_as_displayed": "2026-10-22",
+      "save_time_display_text": "October 22, 2026 at 11:25 PM",
+      "selected_version_verified_by_edit_run_id": true
+    },
+    {
+      "notebook": "Knee ConvNeXt Epoch9 CPU Evaluation \u2014 submitted inference",
+      "version_id": 361219648,
+      "displayed_version_number": 3,
+      "source_url": "https://www.kaggle.com/code/owaiskhan15/knee-convnext-epoch9-cpu-evaluation?scriptVersionId=361219648",
+      "save_type": "Quick Version",
+      "save_date_as_displayed": "2026-10-22",
+      "save_time_display_text": "October 22, 2026 at 11:37 PM",
+      "selected_version_verified_by_edit_run_id": true
+    },
+    {
+      "notebook": "Knee Local Windows Replay Export",
+      "version_id": 361757109,
+      "displayed_version_number": 1,
+      "source_url": "https://www.kaggle.com/code/owaiskhan15/knee-local-windows-replay-export?scriptVersionId=361757109",
+      "save_type": "Save & Run All",
+      "save_date_as_displayed": "2026-10-24",
+      "save_time_display_text": "October 24, 2026 at 3:25 PM",
+      "selected_version_verified_by_edit_run_id": true
+    },
+    {
+      "notebook": "Knee Additional Local Replay Export",
+      "version_id": 362222429,
+      "displayed_version_number": 1,
+      "source_url": "https://www.kaggle.com/code/owaiskhan15/knee-additional-local-replay-export?scriptVersionId=362222429",
+      "save_type": "Save & Run All",
+      "save_date_as_displayed": "2026-10-25",
+      "save_time_display_text": "October 25, 2026 at 11:30 PM",
+      "selected_version_verified_by_edit_run_id": true
+    }
+  ],
+  "executed_notebook_metadata": [
+    {
+      "version_id": 359488326,
+      "downloaded_notebook_sha256": "111cc6c235c9c1cae02a6147e0ae83a97d8f0dc483c817d635b81a0298a75bd2",
+      "source_field": "metadata.papermill",
+      "execution_start_utc": "2026-10-17T21:01:59.553278+00:00",
+      "execution_end_utc": "2026-10-17T21:06:04.500265+00:00"
+    },
+    {
+      "version_id": 360434584,
+      "downloaded_notebook_sha256": "0f49e44b31b87229741d9e8d00c35c63fd0b7c5901f059bb8d1e03e4be21b4d8",
+      "source_field": "metadata.papermill",
+      "execution_start_utc": "2026-10-20T13:31:34.45498+00:00",
+      "execution_end_utc": "2026-10-20T14:03:28.535565+00:00"
+    }
+  ],
+  "private_data_or_weights_published": false,
+  "training_started": false,
+  "gpu_used": false
+}
