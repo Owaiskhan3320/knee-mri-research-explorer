@@ -7,7 +7,7 @@ Source repository: https://github.com/Owaiskhan3320/knee-mri-research-explorer. 
 - Project-trained ConvNeXt-Tiny with finding-specific multiple-instance attention, using public report-derived weak labels and ImageNet initialization.
 - DICOM ordering, physical crop/resize, explicit missing-window masks and frozen preprocessing provenance.
 - A CPU inference worker shared by FastAPI and a Gradio viewer, bounded queue, timeout/restart, access tokens and temporary-file cleanup.
-- An honest model card, 18 passing engineering tests and exact Windows/Linux preprocessing parity on three authorized studies, covering 464 provided DICOM files and complete/missing sequence sets.
+- A model card, [70 passing application/research tests](RELEASE_NOTES.md) and exact Windows/Linux preprocessing parity on three authorized studies, covering 464 provided DICOM files and complete/missing sequence sets.
 - A locally verified Linux CPU container: non-root, read-only model/root filesystem, missing-model rejection and inference with networking disabled.
 
 The model deployed here scored 0.833 public macro ROC AUC. The separate 0.950 public-model reproduction is not this model and should not be presented as independently trained work. These three parity cases verify implementation consistency; they do not measure clinical accuracy.

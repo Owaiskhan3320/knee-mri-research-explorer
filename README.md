@@ -75,7 +75,7 @@ FastAPI and Gradio share a bounded queue and persistent CPU worker, with archive
 
 The [three-study replay](docs/MULTI_STUDY_VERIFICATION.md) covers complete/missing slots. Linux worker processing was 3.871–10.140 seconds, with a largest cgroup peak of 1.13 GiB under two CPUs / 2 GiB. These shared-machine observations exclude upload, queue wait and model startup; they are not hosting-capacity estimates. [Container checks](docs/CONTAINER_VERIFICATION.md) cover non-root, read-only and network-disabled inference.
 
-Further engineering details: [architecture](docs/ARCHITECTURE.md) · [tests and repeat commands](docs/LOCAL_USAGE.md#tests-and-repeat-checks) · [verification history](docs/BUILD_STATUS.md).
+Further engineering details: [architecture](docs/ARCHITECTURE.md) · [tests and repeat commands](docs/LOCAL_USAGE.md#tests-and-repeat-checks) · [verification history](docs/BUILD_STATUS.md) · [final release review](docs/RELEASE_NOTES.md).
 
 ## Repository guide and limitations
 

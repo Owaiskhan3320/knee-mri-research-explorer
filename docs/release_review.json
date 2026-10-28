@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "review_date": "2026-10-28",
+  "scheduled_task_date": "2026-11-02",
+  "reviewed_source_commit": "b7d9aea5496d2783a41025178859dac26471e967",
+  "date_policy": "Scheduled 2 November review completed early on 28 October; Git timestamps are genuine.",
+  "release_scope": "Evidence/documentation update since v0.1.0; no new model, application version or release tag.",
+  "environment": {
+    "python": "3.12.4",
+    "torch": "2.11.0+cpu",
+    "pytest": "9.1.1",
+    "platform": "Windows",
+    "dependency_environment_reused": true,
+    "cold_install_repeated": false,
+    "pip_check": "PASS"
+  },
+  "tests": {
+    "with_authorized_model": {
+      "command": "python -m pytest -q --require-model",
+      "tests": 70,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 70,
+      "junit_suite_seconds": 58.586,
+      "skipped_tests": []
+    },
+    "public_source_clone": {
+      "command": "python -m pytest -q",
+      "tests": 70,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 3,
+      "passed": 67,
+      "junit_suite_seconds": 12.76,
+      "skipped_tests": [
+        "tests.test_inference.test_checkpoint_and_preprocessor_identity",
+        "tests.test_inference.test_real_model_masking_and_request_independence",
+        "tests.test_jobs_api.test_timeout_restarts_real_worker_and_next_job_succeeds"
+      ],
+      "clone_source": "https://github.com/Owaiskhan3320/knee-mri-research-explorer.git",
+      "clone_commit": "b7d9aea5496d2783a41025178859dac26471e967",
+      "private_weights_present": false,
+      "private_data_present": false
+    },
+    "missing_model_guard": {
+      "command": "python -m pytest --require-model --collect-only -q",
+      "exit_code": 4,
+      "expected_rejection": true
+    }
+  },
+  "saved_evidence_reproduction": {
+    "standard_library_only": true,
+    "reports": [
+      {
+        "report": "weak_validation",
+        "byte_exact": true,
+        "bytes": 4361,
+        "sha256": "08879ca329d940618a2970284644ab72a096ebea3204702635fa8d9d2d927f39"
+      },
+      {
+        "report": "expert_development",
+        "byte_exact": true,
+        "bytes": 4264,
+        "sha256": "f49edf09e448c67eda5844d91d1df1cd4e5be3246517a0e1e5ff879f37580df2"
+      },
+      {
+        "report": "training_history",
+        "byte_exact": true,
+        "bytes": 8047,
+        "sha256": "2041bdf43030508976b5bc1740171c88266324a4d10d4b94d4641f6c1b59fad9"
+      },
+      {
+        "report": "error_analysis",
+        "byte_exact": true,
+        "bytes": 35131,
+        "sha256": "9bb52e690fd9fe7bfe0e0e8c186ee894e2101bedec371f86d5ab28dedd63b6f8"
+      }
+    ],
+    "private_inputs_required": true,
+    "plots_regenerated": false
+  },
+  "source_checks": {
+    "training_archive": "TRAINING_ARCHIVE_PROVENANCE_PASS",
+    "pooling_protocol": "POOLING_PROTOCOL_VALID",
+    "pooling_execution": "DEFERRED",
+    "pooling_results": null,
+    "tracked_private_assets": 0,
+    "private_ignore_probes": 5,
+    "notebook_outputs_removed": true,
+    "serving_model_sha256": "1523d4957f3c1e80e135bc5875866af5e35607397757eaaad253d9c79f32fa6e",
+    "raw_preprocessor_sha256": "69c185efb9f060d63463434c3e372e7a2c3a668dc33fbf7a77ccf13f589b01ed",
+    "checkpoint_sha256": "e30535be63503f489d3e0961afa51cce83bfe7d9766faffbe5dfc2be454310dd"
+  },
+  "container": {
+    "verified_source_baseline_commit": "3a9ccac",
+    "application_build_and_dependency_sources_unchanged_from_baseline": true,
+    "rebuilt_or_rerun_for_this_review": false,
+    "historical_verification": "docs/CONTAINER_VERIFICATION.md"
+  },
+  "base_documentation_audit": {
+    "markdown_files": 18,
+    "local_links_and_anchors": 112,
+    "publishable_files": 94,
+    "external_urls_inventoried": 24,
+    "external_urls_exhaustively_live_checked": false,
+    "live_loopback_links_require_running_app": true
+  },
+  "compute": {
+    "model_loaded_for_tests": true,
+    "generated_data_inference_for_tests": true,
+    "new_real_study_inference": false,
+    "training_started": false,
+    "gpu_runner_hours": 0,
+    "paid_services_used": false,
+    "new_competition_submission": false,
+    "public_inference_deployment": false
+  },
+  "limitations": [
+    "A clean public clone used the existing dependency environment, not a fresh cold install.",
+    "Source/media allowlist and identifier/credential scans are bounded checks, not a universal security guarantee.",
+    "Public reports are aggregates; exact historical reconstruction requires authorized private saved evidence.",
+    "The pooling experiment remains unrun; the 58 expert studies are reused development data."
+  ],
+  "final_documentation_audit": {
+    "status": "PASS",
+    "markdown_files": 19,
+    "local_links_and_anchors": 138,
+    "publishable_files": 96,
+    "external_links_live_checked": false
+  }
+}
