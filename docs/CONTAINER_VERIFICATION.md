@@ -24,7 +24,7 @@ Exact image identity, timings and post-request memory snapshots are in [containe
 
 ## Repeat locally
 
-Use the commands in the [README](../README.md#docker-optional-local-cpu) to build the image. With the authorized weights already imported into `models/`, run:
+Use the commands in the [local usage guide](LOCAL_USAGE.md#docker-optional-local-cpu) to build the image. With the authorized weights already imported into `models/`, run:
 
 ```powershell
 & '.\.venv\Scripts\python.exe' 'scripts\verify_container.py' --context desktop-linux --image knee-mri-explorer:local --port 7861
