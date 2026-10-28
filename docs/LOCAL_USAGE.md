@@ -69,6 +69,8 @@ Three model-dependent application tests are explicitly skipped when weights are 
 
 The second command fails if private weights are missing or invalid; it does not substitute a random model. The historical application checks passed on a fresh Windows Python 3.12 environment on 25 October 2026: **15 passed, 3 skipped** without weights and **18 passed** after verified import. Those counts predate the later evaluator/analysis tests. [Verification history](BUILD_STATUS.md) records their scope.
 
+The [28 October final release review](RELEASE_NOTES.md) ran the expanded suite: **70 passed** with authorized weights and **67 passed, 3 skipped** in a clean public source clone without weights/data. Both used the existing installed environment; the source-clone check was not a new dependency installation.
+
 The training archive and planned pooling protocol can be inspected with standard-library-only checks, without weights, MRI data or training:
 
 ```powershell
