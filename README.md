@@ -1,126 +1,94 @@
 # Knee MRI Research Explorer
 
-Local CPU research demo for a project-trained ConvNeXt-Tiny multiple-instance classifier. **Not for diagnosis or patient care.**
+A project-trained **ConvNeXt-Tiny classifier** for 12 knee MRI findings, with a local CPU application for inspecting inputs and scores. The deployed model achieved **0.833 public / 0.824 private macro ROC AUC** in the [RSNA Knee Abnormality Detection competition](https://www.kaggle.com/competitions/rsna-knee-abnormality-detection).
 
-**Project result:** 0.833 public macro ROC AUC; five MRI input slots, 40 three-slice windows, 12 findings. Three real-study replays matched every processed pixel and mask on Windows and Linux, with all scores within 1.20e-7 of Kaggle. This is deployment consistency evidence, not clinical validation.
+**Research demonstration only. Not for diagnosis or patient care.** The public repository contains source, aggregate evaluation and a generated-data demo. Trained weights, scans, reports and study-level labels/predictions remain private.
 
 https://github.com/user-attachments/assets/3e6ca849-924f-4360-852c-d34c7b04c6a2
 
-Training used [Pilkwang Kim's public report-derived labels](https://www.kaggle.com/datasets/pilkwang/rsna-knee-llm-labels) and ImageNet initialization. [Full credits and data boundaries](THIRD_PARTY.md). Development used AI coding assistance.
+[Watch the 60-second demo](docs/demo.mp4) · [Captions](docs/demo.vtt) · [Original training code](training/README.md) · [Model card](docs/MODEL_CARD.md) · [Local setup](docs/LOCAL_USAGE.md)
 
-The [original training source and checkpoint configuration](training/README.md) are archived with source hashes, split/selection details and links to the saved Kaggle versions. Imported on 26 October 2026; this was not a new training run. The published notebook has training disabled.
+The video uses actual browser captures of generated DICOM phantoms, held for readability. These artificial inputs test software behavior; their scores have no medical meaning. The video is not a real-time latency recording.
 
-[Per-finding evaluation](docs/PER_FINDING_EVALUATION.md) was reproduced from the original saved predictions on 27 October: 0.847996 weak-validation macro AUC and 0.853143 on the reused expert development set. Both reconcile with the saved run. The offline evaluator, coverage counts, provenance and aggregate JSON reports are included; study-level inputs remain private.
+## Problem and data
 
-[Training history and decisions](docs/TRAINING_HISTORY.md) includes the recovered eight-epoch curves, replayed checkpoint selection, the earlier budget-stopped baseline and the rejected extra-epoch refinement. The paired competition results are 0.833 public / 0.824 private for the deployed model and 0.834 public / 0.823 private for the trial; neither is a clinical accuracy claim.
+Each MRI study contains multiple series and many slices. The task predicts 12 study-level findings: ACL/MCL injury, medial/lateral meniscus abnormalities, medial/lateral/patellofemoral osteoarthritis, effusion, synovitis, Baker's cyst, contusion and fracture. Several can coexist; the model scores them without locating lesions.
 
-[Label coverage and error analysis](docs/ERROR_ANALYSIS.md) adds aggregate supervision coverage, ranking errors and disagreements at a fixed diagnostic cutoff. It identifies sparse synovitis/fracture labels and MCL/lateral-meniscus ranking weaknesses; the private case-review queue is excluded from GitHub.
+Training used [Pilkwang Kim's published report-derived labels](https://www.kaggle.com/datasets/pilkwang/rsna-knee-llm-labels), rather than a project-built report extractor. `YES`/`NO` entries retain soft scores for training; `UNK` entries are masked. AUC uses explicit binary verdicts. Confidence columns are not targets or loss weights.
 
-[Controlled pooling experiment](docs/POOLING_EXPERIMENT.md): a checked design for retraining attention and masked-mean pooling under matched conditions. The [feasibility audit](docs/POOLING_FEASIBILITY.md) deferred execution: required image shards were not located in the audited project assets, the CPU runner is pending and timing remains unmeasured. No ablation results are claimed.
+| Split | Studies | Role |
+| --- | ---: | --- |
+| Fitting | 3655 | Optimize the model with weak report-derived labels |
+| Weak validation | 637 | Select checkpoints using complete masked soft-label BCE |
+| Expert development | 58 | Repeatedly used development diagnostic |
 
-[Watch the 60-second captioned demo](docs/demo.mp4) · [Captions/transcript](docs/demo.vtt). The demo uses actual browser captures of generated DICOMs, held for readability; it has no narration and is not a real-time latency recording.
+Inherited group assignments were checked for separation across splits. The earlier split/cache-generation implementation is not fully reconstructed. [Label coverage](docs/ERROR_ANALYSIS.md) is uneven: only 579 fitting studies have known synovitis labels.
 
-<details>
-<summary>View the generated-data screenshot</summary>
+## Model and training
 
-![Generated software phantom in the local application](docs/local-demo.png)
+Five sequence slots cover sagittal/coronal/axial fat-suppressed and sagittal/coronal non-fat-suppressed images. Ordered DICOM slices undergo a 140 mm centre crop and 224×224 resize. Three neighbouring slices form each window; validity masks exclude missing or unusable windows.
 
-</details>
+A trainable ImageNet-initialized ConvNeXt-Tiny encodes each window. A 256-dimensional projection, slot embedding and **finding-specific gated attention** combine windows into study predictions: multiple-instance learning (MIL). Training samples two windows per slot; validation/inference use up to 40. Reports are not needed at inference.
 
-No payments, subscriptions, paid APIs, cloud GPU or hosted services are used. No Gradio public share link is created. The full competition dataset is not required.
+The eight-epoch run used seed 42, batch size 2 with four-step accumulation, AdamW encoder/head learning rates of 3e-5 / 3e-4, warmup/cosine scheduling and masked soft-label BCE. Complete weak-validation BCE selected epoch 8; expert AUC and leaderboard scores were not selection inputs.
 
-## Start on Windows
+![Original eight-epoch training and validation curves](docs/training_curves.png)
 
-Python 3.12 is required. From this folder:
+The [training archive](training/README.md) preserves original source, configuration, hashes and Kaggle versions, with training disabled in the published notebook. [Training history](docs/TRAINING_HISTORY.md) explains the curves and selection replay. Full training reproduction still requires authorized private inputs.
+
+## Verified results
+
+| Evidence | Recorded result | What it establishes |
+| --- | --- | --- |
+| Competition, deployed epoch 8 | **0.833 public / 0.824 private macro ROC AUC** | Competition ranking performance of this checkpoint |
+| Weak validation, 637 studies | **0.847996 macro AUC**, soft BCE **0.537434** | Agreement with known weak labels; this split selected the checkpoint |
+| Expert development, 58 studies | **0.853143 macro AUC** | A small, reused development diagnostic |
+| Windows/Linux replay, 3 studies / 464 provided DICOMs | Exact processed pixels/masks; all scores within **1.20e-7** of Kaggle | Implementation consistency across deployment paths |
+
+Both validation/development macro AUCs and all per-finding AUCs were reproduced from saved predictions and reconciled with the original run. [Evaluation](docs/PER_FINDING_EVALUATION.md) includes the evaluator, tolerances, coverage and aggregate JSON. Historical reproduction needs private inputs; artificial-data tests are public.
+
+AUC measures ranking, not percentage accuracy or calibrated risk. Weak and expert scores use different labels/populations; the reused expert set is not an independent test cohort. Deployment replay tests implementation consistency, not accuracy.
+
+## Lessons and unfinished experiments
+
+- **Audit labels before blaming the encoder.** MCL and lateral meniscus have the weakest weak-validation ranking. Synovitis has only 99 known validation labels, including 13 negatives. [Error analysis](docs/ERROR_ANALYSIS.md) separates ranking from illustrative 0.5-cutoff disagreements; cases remain unadjudicated and no clinical threshold was fitted.
+- **Keep checkpoint selection consistent.** An extra-epoch refinement worsened weak BCE from 0.537434 to 0.566695 and scored 0.834 public / 0.823 private. Epoch 8 remains deployed. Labels, learning rates, optimizer state and exposure changed together; this is not a label-only comparison. [Trial evidence](docs/TRAINING_HISTORY.md).
+- **Record resource and readiness limits.** EfficientNet-B0 stopped at its budget gate without a validated candidate. An [attention-versus-mean pooling design](docs/POOLING_EXPERIMENT.md) remains **unrun and deferred**: complete cache shards were not located in the [scoped asset audit](docs/POOLING_FEASIBILITY.md), and CPU implementation/profiling are pending. Neither attempt supplies an architecture-improvement result.
+
+## Run locally
+
+**Python 3.12 is required. A public clone has no trained weights or MRI data.** Inference requires an already downloaded, authorized copy of the exact [model bundle](models/README.md). From the repository folder on Windows:
 
 ```powershell
 .\setup.ps1
-```
-
-If Python 3.12 is installed outside PATH and the usual Windows install folder, pass its executable explicitly: `.\setup.ps1 -PythonPath 'C:\path\to\python.exe'`.
-
-If your PowerShell policy blocks scripts, run the existing environment directly without changing system policy:
-
-```powershell
-& '.\.venv\Scripts\python.exe' 'run.py'
-```
-
-**A public clone contains code and the generated demo, but no trained weights or MRI data.** To run inference, you must already have authorized access to the exact model bundle described in [models/README.md](models/README.md). Import that downloaded bundle before starting the app:
-
-```powershell
 & '.\.venv\Scripts\python.exe' 'scripts\import_bundle.py' 'C:\path\to\authorized-output.zip'
+.\start.ps1
 ```
 
-Import verifies source/checkpoint identities before writing private model assets. It never downloads weights or replaces application source. Without authorized weights, you can inspect the code, watch the demo and run the model-independent tests below; inference remains unavailable.
+Open [the local app](http://127.0.0.1:7860/) and choose **Generated software test**. Import verifies model/source identities; startup never downloads weights. Without weights, use the recorded demo, source and model-independent tests.
 
-After importing authorized weights, run `.\start.ps1` and open http://127.0.0.1:7860/. API documentation: http://127.0.0.1:7860/docs. The readiness endpoint returns 503 while the model loads or if weights are missing.
+[Local usage](docs/LOCAL_USAGE.md) covers setup alternatives, study uploads, API, cleanup, tests and CPU Docker commands. No paid service or public inference host is configured. Setup/cold builds download free dependencies; inference runs locally.
 
-Choose **Generated software test** and run analysis. This creates an artificial DICOM phantom, not a knee scan; its outputs have no medical meaning. No real example scans are redistributed.
+## Application and engineering evidence
 
-## Analyze an authorized local study
+FastAPI and Gradio share a bounded queue and persistent CPU worker, with archive validation, timeouts/restart, job access tokens and temporary-file cleanup. The viewer shows sampled input crops, 12 uncalibrated scores, warnings, timing and model provenance. Job tokens are not a complete public-service authentication system.
 
-Choose **My study (local)**. Provide one ZIP containing `StudyUID/SeriesUID/*.dcm` and a CSV with `StudyInstanceUID,SeriesInstanceUID,Anatomical_Plane,Fat_Suppression,Fluid_Sensitive`.
-Plane values: Sagittal/Coronal/Axial. Flags: 0/1 or true/false. Both identifiers must match the archive. Unsupported/multiframe studies fail rather than receiving invented scores.
+The [three-study replay](docs/MULTI_STUDY_VERIFICATION.md) covers complete/missing slots. Linux worker processing was 3.871–10.140 seconds, with a largest cgroup peak of 1.13 GiB under two CPUs / 2 GiB. These shared-machine observations exclude upload, queue wait and model startup; they are not hosting-capacity estimates. [Container checks](docs/CONTAINER_VERIFICATION.md) cover non-root, read-only and network-disabled inference.
 
-The viewer shows centre slices of sampled, cropped model windows. Results are 12 uncalibrated scores, validity/warning information, stage timings and checkpoint provenance. They are not calibrated risks or diagnostic decisions.
+Further engineering details: [architecture](docs/ARCHITECTURE.md) · [tests and repeat commands](docs/LOCAL_USAGE.md#tests-and-repeat-checks) · [verification history](docs/BUILD_STATUS.md).
 
-## API
+## Repository guide and limitations
 
-`POST /api/v1/jobs` with multipart `kind=synthetic` returns an ID and access token. For uploads, use `kind=upload`, `study` and `metadata` files. Pass `Authorization: Bearer TOKEN` to job status, result, preview and delete endpoints. Poll status; retrieve the result only on completion. Keep tokens private.
+| Path | Contents |
+| --- | --- |
+| [training/](training/README.md) | Archived original training/preparation code, configuration and provenance |
+| [app/](app/) | DICOM preprocessing, model, CPU worker, API and viewer |
+| [scripts/](scripts/) | Saved-prediction evaluation, analysis, bundle import and verification tools |
+| [tests/](tests/) | Artificial-data evaluator tests and application/worker checks |
+| [docs/](docs/) | Aggregate metrics, curves, experiment decisions and deployment evidence |
 
-## Data handling
+Weak-label noise, sparse supervision and sampled windows limit the model. Wider scanner/site generalization, calibration, clinical utility and real compressed-study deployment remain unverified. The metadata adapter is not validated for arbitrary clinical DICOM. See the [model card](docs/MODEL_CARD.md).
 
-One study at a time, three waiting jobs. Study ZIPs, extracted data, previews and results live under ignored `.runtime/jobs/`; expire 30 minutes after completion and are removed on error, clear or shutdown. Stale job directories are cleaned at next startup. The interface uses a separate `.runtime/gradio/` file cache with an approximately 30-minute expiry and shutdown cleanup. Avoid uploading patient data into portfolio demos; keep this app local.
+The separate **0.950 public Raptor/S6 reproduction is a different model**. Project work used AI coding assistance; methods, initialization and labels are credited in [THIRD_PARTY.md](THIRD_PARTY.md). [Portfolio wording](docs/PORTFOLIO.md) uses the same attribution.
 
-Code, tests, synthetic generation and documentation can be versioned. `.gitignore` excludes model weights, studies, runtime files and credentials. No GitHub repository or remote hosting is created automatically.
-
-## Tests
-
-```powershell
-& '.\.venv\Scripts\python.exe' -m pytest -q
-```
-
-When weights are absent, three model-dependent tests are explicitly skipped; other tests still run. Require the full trained-model checks with:
-
-```powershell
-& '.\.venv\Scripts\python.exe' -m pytest -q --require-model
-```
-
-This command fails if private weights are missing or invalid; it does not substitute a random model.
-
-Verified on a fresh Windows Python 3.12 environment on 25 October 2026: **15 passed, 3 skipped** without weights, then **18 passed** after verified model import. `pip check` passed. The complete checks include actual model masking/request independence and worker timeout/recovery.
-
-Three authorized real studies passed Windows and Linux replay: 464 provided DICOM files, complete and missing input sequences, and 512/640/672/1024-square image matrices. Source hashes, processed pixels and masks matched exactly; all 12 scores per study were within 1.20e-7 of Kaggle under the unchanged 1e-5 tolerance. Eight Linux API requests gave identical repeated predictions within each study. See [the expanded verification record](docs/MULTI_STUDY_VERIFICATION.md).
-
-Observed Linux worker processing ranged from 3.871 to 10.140 seconds, with a largest API-container cgroup memory peak of 1.13 GiB under a two-CPU, 2 GiB limit. These are small-sample observations on a shared local machine. The [original Windows case](docs/REAL_STUDY_VERIFICATION.md) and [initial Linux benchmark](docs/LINUX_REAL_STUDY_BENCHMARK.md) remain available as historical records. [Portfolio and resume wording](docs/PORTFOLIO.md) describe the supported claims and attribution.
-
-To repeat with your own authorized private export, without downloading anything or using a GPU:
-
-```powershell
-& '.\.venv\Scripts\python.exe' 'scripts\verify_real_study.py' 'data\local_replay'
-```
-
-The app must already be running. The data folder is optional and excluded from Git and Docker. See [the portfolio/demo checklist](docs/PORTFOLIO.md) before publishing.
-
-## Docker (optional, local CPU)
-
-Built and tested on Windows/WSL2 with a Linux image on 25 October 2026. Import the authorized weights first and start Docker Desktop's Linux engine. From the project folder:
-
-```powershell
-docker --context desktop-linux build --builder desktop-linux -t knee-mri-explorer:local .
-docker --context desktop-linux run --rm --init --name knee-mri-explorer --read-only --cpus 2 --memory 2g --pids-limit 256 --cap-drop ALL --security-opt no-new-privileges --tmpfs /tmp:rw,nosuid,noexec,size=128m --tmpfs /opt/knee/.runtime:rw,nosuid,noexec,size=512m,uid=1000,gid=1000 -p 127.0.0.1:7861:7860 --mount "type=bind,source=$PWD\models,target=/opt/knee/models,readonly" knee-mri-explorer:local
-```
-
-Open http://127.0.0.1:7861/ and choose **Generated software test**. The process runs as a non-root user, mounts private weights read-only and keeps temporary files in memory-backed directories. Uploads default off. Stop it with Ctrl+C; the image and your model files remain local.
-
-The automated check runs missing-model, networking-disabled inference and localhost-access phases, then removes its temporary containers:
-
-```powershell
-& '.\.venv\Scripts\python.exe' 'scripts\verify_container.py'
-```
-
-See [the container checks](docs/CONTAINER_VERIFICATION.md) and [three-study replay/performance record](docs/MULTI_STUDY_VERIFICATION.md) for results and limits. Wider scanner/protocol coverage and real compressed-DICOM cases remain unverified. No image is pushed and no paid hosting is used.
-
-See `docs/ARCHITECTURE.md`, `docs/MODEL_CARD.md` and `models/README.md` for contracts and attribution.
-
-Project-authored code and documentation are MIT licensed. Dataset, pretrained-model and dependency rights remain separate; see [THIRD_PARTY.md](THIRD_PARTY.md).
+Project-authored code/documentation are MIT licensed; dataset/model/dependency rights remain separate. Private data, weights, individual predictions and runtime files are excluded from publication.
