@@ -4,6 +4,27 @@ This archive makes the training behind the deployed epoch-8 model inspectable. I
 
 The project trained a ConvNeXt-Tiny encoder and attention-MIL head using ImageNet initialization and Pilkwang Kim's published report-derived labels. Its public competition macro ROC AUC is **0.833**. Training and application development used AI coding assistance; the backbone, MIL method and published labels are credited in [THIRD_PARTY.md](../THIRD_PARTY.md).
 
+## Kaggle experiment timeline
+
+These are selected historical notebook versions, verified in Kaggle's **Version History on 29 October 2026**. Dates are the version-save dates as Kaggle displayed them; that panel does not label a timezone. Each selected version was checked against its `Edit/run` version ID. [Exact displayed times and evidence identities](../docs/kaggle_timeline.json).
+
+| Saved date (Kaggle display) | Notebook and exact version | Save type | What it records |
+| --- | --- | --- | --- |
+| 18 Oct 2026 | [EfficientNet-B0 budget attempt, V1 / 359488326](https://www.kaggle.com/code/owaiskhan15/knee-efficientnet-b0-budget?scriptVersionId=359488326) | Save & Run All | Budget gate stopped before a validated candidate |
+| 20 Oct 2026 | [ConvNeXt CPU preparation, V1 / 360433261](https://www.kaggle.com/code/owaiskhan15/knee-convnext-cpu-preparation?scriptVersionId=360433261) | Save & Run All | Fixed inputs, initialization and preparation checks |
+| 20 Oct 2026 | [ConvNeXt-Tiny training, V1 / 360434584](https://www.kaggle.com/code/owaiskhan15/knee-convnext-tiny-budget?scriptVersionId=360434584) | Save & Run All | Eight completed epochs; BCE selected epoch 8 |
+| 21 Oct 2026 | [Raw/cache parity, V1 / 360713817](https://www.kaggle.com/code/owaiskhan15/knee-convnext-raw-parity?scriptVersionId=360713817) | Save & Run All | Verified CPU preprocessing/inference bundle |
+| 21 Oct 2026 | [Verified inference, V1 / 360716321](https://www.kaggle.com/code/owaiskhan15/knee-convnext-verified-inference?scriptVersionId=360716321) | Save & Run All | Submitted epoch-8 model: 0.833 public / 0.824 private AUC |
+| 22 Oct 2026 | [Label refinement, V5 / 361212433](https://www.kaggle.com/code/owaiskhan15/knee-convnext-label-refinement?scriptVersionId=361212433) | Quick Version | Saved logs from the extra-epoch trial; base checkpoint retained by BCE |
+| 22 Oct 2026 | [Trial expert check, V1 / 361217016](https://www.kaggle.com/code/owaiskhan15/knee-convnext-epoch9-cpu-evaluation?scriptVersionId=361217016) | Quick Version | Saved expert-evaluation and pixel-parity evidence for the trial |
+| 22 Oct 2026 | [Trial inference snapshot, V3 / 361219648](https://www.kaggle.com/code/owaiskhan15/knee-convnext-epoch9-cpu-evaluation?scriptVersionId=361219648) | Quick Version | Submitted trial checkpoint: 0.834 public / 0.823 private AUC |
+| 24 Oct 2026 | [First local replay export, V1 / 361757109](https://www.kaggle.com/code/owaiskhan15/knee-local-windows-replay-export?scriptVersionId=361757109) | Save & Run All | Private reference inputs for Windows/Linux verification |
+| 25 Oct 2026 | [Additional replay export, V1 / 362222429](https://www.kaggle.com/code/owaiskhan15/knee-additional-local-replay-export?scriptVersionId=362222429) | Save & Run All | Two further private cases, extending parity coverage to three studies |
+
+**Save dates and execution dates are different evidence.** Quick Version entries date saved snapshots, not the start or duration of their logged workers. Hash-checked original notebook metadata records execution windows of **17 Oct, 21:01-21:06 UTC** for EfficientNet and **20 Oct, 13:31-14:03 UTC** for ConvNeXt. The machine-readable timeline preserves the full UTC timestamps. No missing execution dates were inferred from relative labels such as “days ago.”
+
+The GitHub app/source history starts on **25 October**, this training archive was imported on **26 October**, saved-result reconstruction followed on **27 October**, and the release review was recorded on **28 October**. Those commits document publication and recovery of earlier experiments; they are not new training runs. The timeline above is a selected record, not a reconstruction of every earlier ResNet/DINO notebook or data-preparation step.
+
 ## Start reading here
 
 | File | Role in the original pipeline |
